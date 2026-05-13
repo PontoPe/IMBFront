@@ -129,8 +129,7 @@ h1, h2, h3, h4 {
   animation: marquee 45s linear infinite;
   will-change: transform;
 }
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track { animation-play-state: paused; }
+/* Marquee continues running even on hover/focus — never pause */
 @keyframes marquee {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }
@@ -162,9 +161,7 @@ h1, h2, h3, h4 {
   opacity: 0.65;
   transition: filter 0.3s, opacity 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
 }
-.marquee:hover .client-logo,
-.marquee:focus-within .client-logo { filter: grayscale(0); opacity: 1; }
-.client-logo:hover { color: #ea7805; border-color: #ea7805; transform: translateY(-2px); }
+.client-logo:hover { filter: grayscale(0); opacity: 1; color: #ea7805; border-color: #ea7805; transform: translateY(-2px); }
 
 /* ========== Compare page ========== */
 .cmp-grid {
@@ -601,6 +598,148 @@ textarea:disabled,
   border-color: var(--imb-neutral-300) !important;
 }
 
+/* ========== Case cards ========== */
+.case-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.case-card {
+  background: var(--imb-neutral-100);
+  border: 1px solid var(--imb-neutral-300);
+  border-radius: var(--imb-radius-card);
+  box-shadow: var(--imb-shadow-1);
+  overflow: hidden;
+  transition: transform var(--imb-transition), box-shadow var(--imb-transition), border-color var(--imb-transition);
+}
+
+.case-card:hover {
+  border-color: var(--imb-neutral-400);
+  box-shadow: var(--imb-shadow-2);
+  transform: translateY(-2px);
+}
+
+.case-card-link {
+  color: inherit;
+  display: grid;
+  grid-template-columns: minmax(210px, 42%) minmax(0, 1fr);
+  min-height: 252px;
+}
+
+.case-card-media {
+  background: var(--imb-neutral-300);
+  min-height: 252px;
+  overflow: hidden;
+}
+
+.case-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--imb-transition);
+}
+
+.case-card:hover .case-card-media img {
+  transform: scale(1.04);
+}
+
+.case-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 1.5rem 1.65rem;
+}
+
+.case-card-location {
+  align-items: center;
+  color: var(--imb-orange);
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  gap: 0.35rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.case-card-location .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.case-card-title {
+  color: var(--imb-black);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.28;
+  margin: 0;
+}
+
+.case-card-summary {
+  color: var(--imb-neutral-600);
+  display: -webkit-box;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin: 0.5rem 0 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.case-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.case-card-chip {
+  background: var(--imb-neutral-200);
+  border-radius: 9999px;
+  color: var(--imb-black);
+  display: inline-flex;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  padding: 0.5rem 0.85rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 1023px) {
+  .case-list-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .case-card-link {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .case-card-media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .case-card-body {
+    padding: 1.25rem;
+  }
+
+  .case-card-title {
+    font-size: 1rem;
+  }
+
+  .case-card-summary {
+    font-size: 0.92rem;
+  }
+}
+
 ::-webkit-scrollbar-track {
   background: var(--imb-neutral-100);
 }
@@ -613,4 +752,76 @@ textarea:disabled,
 ::selection {
   background: var(--imb-orange);
   color: var(--imb-white);
+}
+
+/* ========== User-requested palette overrides ========== */
+/* Dark surfaces & overlays: black (not navy) */
+.bg-tertiary,
+.bg-on-background,
+.bg-inverse-surface {
+  background-color: var(--imb-black) !important;
+}
+.bg-on-background\/60 {
+  background-color: rgba(31, 35, 34, 0.6) !important;
+}
+.from-on-background\/80,
+.from-on-surface\/95,
+.from-inverse-surface {
+  --tw-gradient-from: rgba(31, 35, 34, 0.86) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to:   rgba(31, 35, 34, 0)    var(--tw-gradient-to-position)   !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.via-on-background\/40,
+.via-on-surface\/40,
+.via-inverse-surface\/60,
+.via-inverse-surface\/70 {
+  --tw-gradient-to: rgba(31, 35, 34, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(31, 35, 34, 0.48) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+.to-inverse-surface\/30,
+.to-inverse-surface {
+  --tw-gradient-to: rgba(31, 35, 34, 0.30) var(--tw-gradient-to-position) !important;
+}
+
+/* Footer is always black with light text */
+footer {
+  background-color: var(--imb-black) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+footer h5,
+footer .font-headline,
+footer .text-on-surface {
+  color: var(--imb-white) !important;
+}
+footer a {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+footer a:hover,
+footer .hover\:text-primary:hover {
+  color: var(--imb-orange) !important;
+}
+footer .text-on-surface-variant,
+footer .text-on-surface-variant\/60,
+footer .text-on-surface-variant\/70 {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+footer .bg-surface-container-high {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+footer .border-surface-container-high,
+footer .border-surface-container-highest,
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+footer .material-symbols-outlined.text-primary {
+  color: var(--imb-orange) !important;
+}
+
+/* WhatsApp gradient: use black mid-tone instead of navy */
+.wa-gradient {
+  background: linear-gradient(135deg, var(--imb-success) 0%, var(--imb-black) 100%) !important;
+}
+.wa-gradient:hover {
+  background: linear-gradient(135deg, rgba(76, 202, 57, 0.84) 0%, var(--imb-black) 100%) !important;
 }

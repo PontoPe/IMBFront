@@ -147,10 +147,6 @@ window.IMB_resolveWaMsg = function (el) {
   var I18N_LANG = (window.IMB_I18N && window.IMB_I18N.lang) || 'pt';
   var I18N_LOCALE = I18N_LANG === 'pt' ? 'pt-BR' : (I18N_LANG === 'en' ? 'en-US' : 'es-AR');
   var MAIN_UI = {
-    waCaseInterest: { pt: function(t,l){ return 'Olá! Tenho interesse no case ' + t + ' (' + l + ') e gostaria de saber mais sobre os equipamentos utilizados.'; },
-                      en: function(t,l){ return 'Hi! I\'m interested in the case ' + t + ' (' + l + ') and would like to know more about the equipment used.'; },
-                      es: function(t,l){ return '¡Hola! Tengo interés en el caso ' + t + ' (' + l + ') y quisiera saber más sobre los equipos utilizados.'; } },
-    openCase:       { pt: 'Abrir case: ', en: 'Open case: ', es: 'Abrir caso: ' },
     viewCase:       { pt: 'Ver case', en: 'View case', es: 'Ver caso' },
     totalRoad:      { pt: 'Pavimentação rígida & contornos', en: 'Rigid paving & bypasses', es: 'Pavimentación rígida y circunvalaciones' },
     totalBarrier:   { pt: 'Barreiras de concreto extrudadas', en: 'Extruded concrete barriers', es: 'Barreras de concreto extruidas' },
@@ -165,58 +161,9 @@ window.IMB_resolveWaMsg = function (el) {
     return String(n);
   }
 
-  function renderCaseCard(c, isFeatured) {
-    var cTitle    = T(c.title);
-    var cLocation = T(c.location);
-    var cSummary  = T(c.summary);
-    var cHighlight= c.highlight ? T(c.highlight) : '';
-    var waMsg = MAIN_UI.waCaseInterest[I18N_LANG](cTitle, cLocation);
-    var equipChips = (c.equipment || []).map(function (e) {
-      return '<span class="text-[10px] font-bold uppercase tracking-widest bg-white/15 backdrop-blur px-3 py-1 rounded">' + escHtml(T(e.name)) + '</span>';
-    }).join('');
-    var metricChips = (c.metrics || []).slice(0, 3).map(function (m) {
-      return '<div class="flex items-center gap-1.5 bg-white/10 backdrop-blur px-2.5 py-1 rounded">'
-           +   '<span class="material-symbols-outlined text-[14px] text-primary-container">' + escHtml(m.icon) + '</span>'
-           +   '<span class="text-[11px] font-bold text-white">' + escHtml(m.value) + (m.unit ? ' <span class="text-white/70 font-medium">' + escHtml(T(m.unit)) + '</span>' : '') + '</span>'
-           + '</div>';
-    }).join('');
-    var sizeClasses = isFeatured
-      ? 'md:row-span-2 md:col-span-1 lg:col-span-2 lg:row-span-1'
-      : '';
-    var aspectClass = isFeatured ? 'aspect-[16/10] lg:aspect-[16/9]' : 'aspect-[4/3]';
-    var titleClass = isFeatured ? 'text-2xl md:text-3xl mb-2' : 'text-lg md:text-xl';
-    var summaryHtml = isFeatured
-      ? '<p class="text-sm text-white/85 leading-relaxed max-w-xl mb-3">' + escHtml(cSummary) + '</p>'
-      : '<p class="text-xs text-white/80 mt-2 leading-relaxed">' + escHtml(cSummary) + '</p>';
-    var highlightBadge = cHighlight
-      ? '<span class="absolute top-4 left-4 bg-primary-container text-on-primary-container font-black text-[10px] uppercase tracking-widest px-3 py-1.5 rounded">' + escHtml(cHighlight) + '</span>'
-      : '';
-
-    return ''
-      + '<article class="group relative rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm hover:shadow-xl transition-shadow fade-in-up ' + sizeClasses + '">'
-      +   '<a href="' + escHtml(caseUrl) + '?id=' + encodeURIComponent(c.id) + '" class="block" aria-label="' + escHtml(mainUi('openCase') + cTitle) + '">'
-      +     '<div class="relative ' + aspectClass + ' overflow-hidden bg-inverse-surface">'
-      +       '<img class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="' + escHtml(c.hero_image) + '" alt="' + escHtml(cTitle) + '" loading="lazy" />'
-      +       '<div class="absolute inset-0 bg-gradient-to-t from-on-surface/95 via-on-surface/40 to-transparent"></div>'
-      +       highlightBadge
-      +     '</div>'
-      +     '<div class="absolute inset-x-0 bottom-0 p-5 md:p-6 text-white">'
-      +       '<div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-primary-container mb-1">'
-      +         '<span class="material-symbols-outlined text-sm">location_on</span>' + escHtml(cLocation)
-      +       '</div>'
-      +       '<h3 class="font-headline font-black uppercase leading-tight tracking-tight ' + titleClass + '">' + escHtml(cTitle) + '</h3>'
-      +       summaryHtml
-      +       (metricChips ? '<div class="mt-3 flex flex-wrap gap-1.5">' + metricChips + '</div>' : '')
-      +       (isFeatured && equipChips ? '<div class="mt-3 flex flex-wrap gap-2">' + equipChips + '</div>' : '')
-      +     '</div>'
-      +   '</a>'
-      +   '<div class="absolute top-3 right-3 flex gap-2">'
-      +     '<a href="#" class="wa-link inline-flex items-center justify-center w-9 h-9 rounded-full bg-success text-white shadow-lg hover:bg-success-strong transition-colors" '
-      +       'data-wa-msg="' + escHtml(waMsg) + '" target="_blank" rel="noopener">'
-      +       '<span class="material-symbols-outlined text-base" style="font-variation-settings:\'FILL\' 1;">chat</span>'
-      +     '</a>'
-      +   '</div>'
-      + '</article>';
+  function renderCaseCard(c) {
+    if (window.IMB_CASES && window.IMB_CASES.renderCard) return window.IMB_CASES.renderCard(c);
+    return '';
   }
 
   function renderTotalCard(value, unit, label, icon) {

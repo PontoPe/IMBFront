@@ -329,5 +329,57 @@ window.IMB_CASES = (function () {
     return cases.find((c) => c.id === id) || null;
   }
 
-  return { cases, totals, getById };
+  function escHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  function T(v) {
+    if (v == null) return '';
+    if (typeof v === 'object' && (v.pt || v.en || v.es)) {
+      return (window.IMB_I18N && window.IMB_I18N.pickLang) ? window.IMB_I18N.pickLang(v) : (v.pt || v.en || v.es || '');
+    }
+    return v;
+  }
+
+  function caseHref(c) {
+    if (window.IMB_I18N && window.IMB_I18N.caseDetailUrl) return window.IMB_I18N.caseDetailUrl(c.id);
+    return 'case.html?id=' + encodeURIComponent(c.id);
+  }
+
+  function metricText(m) {
+    var value = T(m.value);
+    var unit = T(m.unit);
+    return unit ? value + ' ' + unit : value;
+  }
+
+  function renderCard(c) {
+    var title = T(c.title);
+    var location = T(c.location);
+    var summary = T(c.summary);
+    var chips = (c.metrics || []).slice(0, 3).map(function (m) {
+      return '<span class="case-card-chip">' + escHtml(metricText(m)) + '</span>';
+    }).join('');
+
+    return ''
+      + '<article class="case-card group fade-in-up">'
+      +   '<a href="' + escHtml(caseHref(c)) + '" class="case-card-link" aria-label="' + escHtml(title) + '">'
+      +     '<div class="case-card-media">'
+      +       '<img src="' + escHtml(c.hero_image) + '" alt="' + escHtml(title) + '" loading="lazy" />'
+      +     '</div>'
+      +     '<div class="case-card-body">'
+      +       '<div class="case-card-location">'
+      +         '<span class="material-symbols-outlined">location_on</span>'
+      +         '<span>' + escHtml(location) + '</span>'
+      +       '</div>'
+      +       '<h3 class="case-card-title">' + escHtml(title) + '</h3>'
+      +       '<p class="case-card-summary">' + escHtml(summary) + '</p>'
+      +       (chips ? '<div class="case-card-chips">' + chips + '</div>' : '')
+      +     '</div>'
+      +   '</a>'
+      + '</article>';
+  }
+
+  return { cases, totals, getById, renderCard };
 })();

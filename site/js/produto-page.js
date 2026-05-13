@@ -93,10 +93,11 @@
 
   var waMsg = UI.waQuote[LANG](prod.name, prodSubtitle);
   var isExtrusora = /extrus/i.test(prodTipo || '');
-  var contatoUrl  = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('contato') : 'contato.html';
+  var contatoBase = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('contato') : 'contato.html';
+  var contatoAnchor = LANG === 'en' ? '#contact' : (LANG === 'es' ? '#contacto' : '#contato');
+  var contatoUrl  = contatoBase + contatoAnchor;
   var produtosUrl = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('produtos') : 'produtos.html';
   var compararUrl = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('comparar') : 'comparar.html';
-  var caseUrl     = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('case')    : 'case.html';
   var lineUrl     = (window.IMB_I18N && window.IMB_I18N.productLineUrl) ? window.IMB_I18N.productLineUrl(prod) : (prod.url || produtosUrl);
 
   // ---- Hero ----
@@ -205,22 +206,13 @@
   var casesBlock = '';
   if (relatedCases.length) {
     var caseCards = relatedCases.map(function (c) {
-      return ''
-        + '<a href="' + escHtml(caseUrl) + '?id=' + encodeURIComponent(c.id) + '" class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all block">'
-        +   '<div class="aspect-[16/10] overflow-hidden bg-surface-container">'
-        +     '<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="' + escHtml(c.hero_image) + '" alt="' + escHtml(T(c.title)) + '" loading="lazy" />'
-        +   '</div>'
-        +   '<div class="p-5">'
-        +     '<div class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">' + escHtml(T(c.location)) + '</div>'
-        +     '<h4 class="font-headline font-bold text-lg uppercase tracking-tight text-on-surface leading-tight">' + escHtml(T(c.title)) + '</h4>'
-        +   '</div>'
-        + '</a>';
+      return window.IMB_CASES.renderCard ? window.IMB_CASES.renderCard(c) : '';
     }).join('');
     casesBlock = ''
       + '<section class="py-16 md:py-20 bg-surface-container-low">'
       +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
       +     '<h2 class="font-headline font-extrabold text-2xl md:text-3xl tracking-tight mb-8 border-l-8 border-primary pl-6">' + escHtml(ui('relatedProj')) + '</h2>'
-      +     '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">' + caseCards + '</div>'
+      +     '<div class="case-list-grid">' + caseCards + '</div>'
       +   '</div>'
       + '</section>';
   }

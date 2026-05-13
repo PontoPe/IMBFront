@@ -43,9 +43,10 @@
   };
   function ui(k) { var e = UI[k]; return e ? (e[LANG] || e.pt) : k; }
   var produtosUrl = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('produtos') : 'produtos.html';
-  var contatoUrl  = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('contato')  : 'contato.html';
+  var contatoBase = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('contato')  : 'contato.html';
+  var contatoAnchor = LANG === 'en' ? '#contact' : (LANG === 'es' ? '#contacto' : '#contato');
+  var contatoUrl  = contatoBase + contatoAnchor;
   var casesUrl    = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('cases')    : 'cases.html';
-  var caseUrl     = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('case')     : 'case.html';
   function productDetailUrl(product) {
     if (product && window.IMB_I18N && window.IMB_I18N.productDetailUrl) {
       return window.IMB_I18N.productDetailUrl(product.id);
@@ -223,16 +224,7 @@
   // ---- CTA + outros cases ----
   var others = window.IMB_CASES.cases.filter(function (cc) { return cc.id !== c.id; }).slice(0, 3);
   var othersHtml = others.map(function (cc) {
-    return ''
-      + '<a href="' + escHtml(caseUrl) + '?id=' + encodeURIComponent(cc.id) + '" class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all block">'
-      +   '<div class="aspect-[16/10] overflow-hidden bg-surface-container">'
-      +     '<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="' + escHtml(cc.hero_image) + '" alt="' + escHtml(T(cc.title)) + '" loading="lazy" />'
-      +   '</div>'
-      +   '<div class="p-5">'
-      +     '<div class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">' + escHtml(T(cc.location)) + '</div>'
-      +     '<h4 class="font-headline font-bold text-lg uppercase tracking-tight text-on-surface leading-tight">' + escHtml(T(cc.title)) + '</h4>'
-      +   '</div>'
-      + '</a>';
+    return window.IMB_CASES.renderCard ? window.IMB_CASES.renderCard(cc) : '';
   }).join('');
   var ctaBlock = ''
     + '<section class="py-16 md:py-20 bg-surface">'
@@ -254,7 +246,7 @@
     +     '<h2 class="font-headline font-extrabold text-xl uppercase tracking-widest text-on-surface-variant flex items-center gap-4 mb-8">'
     +       '<span class="w-12 h-[2px] bg-primary-container"></span>' + escHtml(ui('otherCases'))
     +     '</h2>'
-    +     '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">' + othersHtml + '</div>'
+    +     '<div class="case-list-grid">' + othersHtml + '</div>'
     +   '</div>'
     + '</section>';
 
