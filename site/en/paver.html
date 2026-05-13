@@ -19,7 +19,7 @@
 <body class="bg-surface text-on-surface">
   <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20">
-      <a href="index.html" class="text-xl font-black text-on-surface tracking-tighter uppercase font-headline">IMB Brasil</a>
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></a>
       <div class="hidden lg:flex items-center space-x-8 font-headline font-semibold tracking-tight text-sm uppercase">
         <a class="text-secondary hover:text-primary transition-colors" href="index.html">Home</a>
         <a class="text-primary border-b-2 border-primary pb-1" href="products.html">Products</a>
@@ -76,8 +76,9 @@
           </div>
           <div class="flex flex-col gap-3 pt-2">
             <a href="#" class="wa-link w-full bg-primary-container hover:bg-primary text-on-primary-container font-headline font-black py-4 md:py-5 px-8 rounded-lg text-base md:text-lg uppercase tracking-wider flex justify-center items-center gap-3 transition-all" target="_blank" rel="noopener" data-wa-msg="Hi! I'd like a quote for the IMB-7300 Paver."><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">chat</span>Request a Quote</a>
-            <span class="wa-hint">Mon–Fri · 8am–6pm · Reply in ~15min</span>
             <a href="contact.html#contact" class="w-full border-2 border-outline-variant hover:bg-surface-container-high text-on-surface font-headline font-bold py-3 md:py-4 px-8 rounded-lg text-center uppercase tracking-widest text-sm flex justify-center items-center gap-2"><span class="material-symbols-outlined">mail</span>Email Contact</a>
+            <!-- TODO(wa-hint): hours/SLA sits below the "Email Contact" button per client request. -->
+            <span class="wa-hint self-center">Mon–Fri · 8am–6pm · Reply in ~15min</span>
           </div>
         </div>
       </div>

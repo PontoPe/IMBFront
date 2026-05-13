@@ -19,7 +19,7 @@
 <body class="bg-surface text-on-surface">
   <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20">
-      <a href="index.html" class="text-xl font-black text-on-surface tracking-tighter uppercase font-headline">IMB Brasil</a>
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></a>
       <div class="hidden lg:flex items-center space-x-8 font-headline font-semibold tracking-tight text-sm uppercase">
         <a class="text-primary border-b-2 border-primary pb-1" href="index.html">Inicio</a>
         <a class="text-secondary hover:text-primary transition-colors" href="productos.html">Productos</a>
@@ -91,6 +91,26 @@
     </div>
   </section>
 
+  <!-- TODO(clients-marquee): logos rotativos. Lista poblada por js/main.js via #clients-track.
+       Edita el array CLIENTS en site/js/main.js (~línea 244) para cambiar marcas. -->
+  <section id="clientes" class="py-16 md:py-24 bg-surface-container-low overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="mb-10 md:mb-14 fade-in-up">
+        <div class="flex items-center gap-4 mb-4">
+          <span class="h-1 w-12 bg-primary"></span>
+          <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Quién confía</span>
+        </div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-xl">Clientes que construyen junto a nosotros.</h2>
+          <p class="text-on-surface-variant text-sm md:text-base max-w-md leading-relaxed">Constructoras, concesionarias y organismos públicos que eligieron la precisión IMB.</p>
+        </div>
+      </div>
+    </div>
+    <div class="marquee fade-in-up" aria-label="Carrusel de clientes IMB Brasil">
+      <div class="marquee-track" id="clients-track"><!-- poblado por js/main.js --></div>
+    </div>
+  </section>
+
   <section class="py-16 md:py-20 bg-inverse-surface text-white">
     <div class="max-w-7xl mx-auto px-4 md:px-8 text-center fade-in-up">
       <h2 class="text-3xl md:text-4xl font-black font-headline tracking-tighter mb-4">¿Listo para tu próximo proyecto?</h2>
@@ -104,7 +124,7 @@
 
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12 px-4 md:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto">
-      <div class="space-y-4"><div class="font-headline font-bold text-on-surface text-2xl uppercase tracking-tighter">IMB Brasil</div><p class="text-xs text-on-surface-variant leading-relaxed">Líder en tecnología de pavimentación y extrusión de concreto en América Latina.</p></div>
+      <div class="space-y-4"><div class="site-logo-footer"><img src="../images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></div><p class="text-xs text-on-surface-variant leading-relaxed">Líder en tecnología de pavimentación y extrusión de concreto en América Latina.</p></div>
       <div class="space-y-4"><h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipos</h5><ul class="text-xs text-on-surface-variant space-y-2"><li><a class="hover:text-primary transition-colors" href="pavimentadora.html">Pavimentadoras</a></li><li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras</a></li><li><a class="hover:text-primary transition-colors" href="productos.html">Catálogo Completo</a></li><li><a class="hover:text-primary transition-colors" href="comparar.html">Comparar Equipos</a></li></ul></div>
       <div class="space-y-4"><h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Empresa</h5><ul class="text-xs text-on-surface-variant space-y-2"><li><a class="hover:text-primary transition-colors" href="contacto.html#nosotros">Nosotros</a></li><li><a class="hover:text-primary transition-colors" href="casos.html">Casos de Obras</a></li><li><a class="hover:text-primary transition-colors" href="contacto.html">Contacto</a></li></ul></div>
       <div class="space-y-4"><h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Presencia Internacional</h5><div class="flex flex-wrap gap-2 text-[11px] text-on-surface-variant"><span class="px-2 py-1 bg-surface-container-high rounded">🇧🇷 BR</span><span class="px-2 py-1 bg-surface-container-high rounded">🇦🇷 AR</span><span class="px-2 py-1 bg-surface-container-high rounded">🇨🇱 CL</span><span class="px-2 py-1 bg-surface-container-high rounded">🇵🇾 PY</span><span class="px-2 py-1 bg-surface-container-high rounded">🇺🇾 UY</span><span class="px-2 py-1 bg-surface-container-high rounded">🇵🇪 PE</span><span class="px-2 py-1 bg-surface-container-high rounded">🇨🇴 CO</span></div></div>

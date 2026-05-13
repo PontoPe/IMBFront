@@ -825,3 +825,29 @@ footer .material-symbols-outlined.text-primary {
 .wa-gradient:hover {
   background: linear-gradient(135deg, rgba(76, 202, 57, 0.84) 0%, var(--imb-black) 100%) !important;
 }
+
+/* ========== Site logo (replaces text "IMB Brasil" in nav + footer) ========== */
+/* TODO(logo): SVG file lives at site/images/LOGO_IMB.svg. Root pages use images/...,
+   pages inside en/ and es/ use ../images/... To swap the logo, replace the SVG file. */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+}
+.site-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+@media (min-width: 768px) {
+  .site-logo-img { height: 48px; }
+}
+.site-logo-footer {
+  display: inline-flex;
+  align-items: center;
+}
+/* Footer has dark background — force logo to white so it stays legible regardless of source colors. */
+.site-logo-footer .site-logo-img {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+  height: 44px;
+}

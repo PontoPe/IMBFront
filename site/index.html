@@ -268,6 +268,26 @@
     </div>
   </section>
 
+  <!-- TODO(clients-marquee): logos rotativos. Lista populada por js/main.js via #clients-track.
+       Para editar a lista, mexer no array CLIENTS em site/js/main.js (~linha 244). -->
+  <section id="clientes" class="py-16 md:py-24 bg-surface-container-low overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="mb-10 md:mb-14 fade-in-up">
+        <div class="flex items-center gap-4 mb-4">
+          <span class="h-1 w-12 bg-primary"></span>
+          <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Quem confia</span>
+        </div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-xl">Clientes que constroem o Brasil ao nosso lado.</h2>
+          <p class="text-on-surface-variant text-sm md:text-base max-w-md leading-relaxed">Construtoras, concessionárias e órgãos públicos que escolheram a precisão IMB.</p>
+        </div>
+      </div>
+    </div>
+    <div class="marquee fade-in-up" aria-label="Carrossel de clientes IMB Brasil">
+      <div class="marquee-track" id="clients-track"><!-- populado por js/main.js --></div>
+    </div>
+  </section>
+
   <section class="py-16 md:py-20 bg-inverse-surface text-white">
     <div class="max-w-7xl mx-auto px-4 md:px-8 text-center fade-in-up">
       <h2 class="text-3xl md:text-4xl font-black font-headline tracking-tighter mb-4">Pronto para o próximo projeto?</h2>
@@ -289,7 +309,7 @@
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12 px-4 md:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto">
       <div class="space-y-4">
-        <div class="font-headline font-bold text-on-surface text-2xl uppercase tracking-tighter">IMB Brasil</div>
+        <div class="site-logo-footer"><img src="images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></div>
         <p class="text-xs text-on-surface-variant leading-relaxed">
           Líder em tecnologia de pavimentação e extrusão de concreto, servindo os maiores projetos de infraestrutura da América Latina.
         </p>
