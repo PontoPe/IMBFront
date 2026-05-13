@@ -235,7 +235,7 @@
     +         '<p class="text-on-surface-variant max-w-xl">' + escHtml(ui('compareDesc')) + '</p>'
     +       '</div>'
     +       '<div class="flex flex-wrap gap-3 shrink-0">'
-    +         '<a href="' + escHtml(compararUrl) + '?ids=' + encodeURIComponent(prod.id) + '" class="bg-on-background hover:bg-inverse-surface text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2">'
+    +         '<a href="' + escHtml(compararUrl) + '?ids=' + encodeURIComponent(prod.id) + '" class="bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2">'
     +           '<span class="material-symbols-outlined text-sm">compare_arrows</span>' + escHtml(ui('compareBtn'))
     +         '</a>'
     +         '<a href="#" class="wa-link bg-success hover:bg-success-strong text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2" data-wa-msg="' + escHtml(waMsg) + '" target="_blank" rel="noopener">'

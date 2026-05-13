@@ -246,7 +246,7 @@
     +         '<a href="#" class="wa-link bg-success hover:bg-success-strong text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2" data-wa-msg="' + escHtml(waMsgFull) + '" target="_blank" rel="noopener">'
     +           '<span class="material-symbols-outlined text-sm" style="font-variation-settings:\'FILL\' 1;">chat</span>WhatsApp'
     +         '</a>'
-    +         '<a href="' + escHtml(contatoUrl) + '" class="bg-on-background hover:bg-inverse-surface text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2">'
+    +         '<a href="' + escHtml(contatoUrl) + '" class="bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2">'
     +           '<span class="material-symbols-outlined text-sm">mail</span>' + escHtml(ui('contact'))
     +         '</a>'
     +       '</div>'

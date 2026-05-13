@@ -257,7 +257,7 @@
         <button type="button" id="share-link-btn" class="text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-md bg-surface-container-high hover:bg-surface-dim transition-colors flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">link</span>${ui('shareLink')}
         </button>
-        <button type="button" id="print-btn" class="text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-md bg-on-background text-white hover:bg-inverse-surface transition-colors flex items-center gap-2">
+        <button type="button" id="print-btn" class="text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-md bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors flex items-center gap-2">
           <span class="material-symbols-outlined text-sm">print</span>${ui('print')}
         </button>
       </div>
