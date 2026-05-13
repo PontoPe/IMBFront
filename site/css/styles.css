@@ -1,0 +1,246 @@
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.forged-gradient {
+  background: linear-gradient(135deg, #735c00 0%, #a38400 100%);
+}
+.forged-gradient:hover {
+  background: linear-gradient(135deg, #574500 0%, #735c00 100%);
+}
+
+.wa-gradient {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+.wa-gradient:hover {
+  background: linear-gradient(135deg, #1fb855 0%, #0f6f64 100%);
+}
+
+/* Pulsa pontinho verde indicando online/horário comercial. */
+.wa-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #4e4632;
+  letter-spacing: 0.02em;
+}
+.wa-hint::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #25D366;
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  animation: wa-hint-pulse 2s infinite;
+}
+@keyframes wa-hint-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);  }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);    }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-hint::before { animation: none; }
+}
+
+.ghost-border {
+  outline: 1px solid rgba(209, 197, 171, 0.2);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4 {
+  font-family: 'Work Sans', sans-serif;
+}
+
+#mobile-menu {
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+.wa-fab {
+  animation: wa-pulse 2.5s infinite;
+}
+
+.vignette-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(22, 28, 31, 0.7) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.spec-chip {
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #eff4f8;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1c5ab;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #80765f;
+}
+
+::selection {
+  background: #ffcd00;
+  color: #241a00;
+}
+
+/* ========== Clients marquee ========== */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+.client-logo {
+  flex: 0 0 auto;
+  height: 96px;
+  min-width: 220px;
+  margin-right: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #e3e9ed;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.75rem;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  color: #4e4632;
+  text-align: center;
+  line-height: 1.05;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: filter 0.3s, opacity 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+.marquee:hover .client-logo,
+.marquee:focus-within .client-logo { filter: grayscale(0); opacity: 1; }
+.client-logo:hover { color: #735c00; border-color: #735c00; transform: translateY(-2px); }
+
+/* ========== Compare page ========== */
+.cmp-grid {
+  display: grid;
+  min-width: 720px;
+}
+.cmp-head-cell {
+  padding: 1.25rem 1rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e9ed;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.cmp-head-label {
+  background: #f5fafe;
+  border-right: 1px solid #e3e9ed;
+}
+.cmp-row-label {
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #4e4632;
+  background: #f5fafe;
+  border-right: 1px solid #e3e9ed;
+  border-bottom: 1px solid #eff4f8;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.cmp-cell {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #eff4f8;
+  border-right: 1px solid #eff4f8;
+  display: flex;
+  align-items: center;
+}
+.cmp-cell:last-child { border-right: 0; }
+.cmp-section-head {
+  padding: 0.85rem 1rem;
+  background: #e9eff2;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: #161c1f;
+  border-top: 1px solid #d1c5ab33;
+  border-bottom: 1px solid #d1c5ab33;
+}
+.cmp-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #e3e9ed;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.cmp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #735c00 0%, #ffcd00 100%);
+  border-radius: 9999px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cmp-table-wrap { box-shadow: 0 1px 0 rgba(22,28,31,0.04); }
+
+@media (max-width: 640px) {
+  .cmp-head-cell { padding: 0.85rem 0.6rem; }
+  .cmp-row-label { padding: 0.75rem 0.6rem; font-size: 0.7rem; }
+  .cmp-cell      { padding: 0.75rem 0.6rem; }
+  .cmp-section-head { padding: 0.7rem 0.6rem; }
+}
+
+@media print {
+  nav, .wa-fab, #mobile-menu, #menu-overlay { display: none !important; }
+  body { font-size: 12pt; }
+  .cmp-scroll { overflow: visible !important; }
+  .cmp-grid   { min-width: 0; }
+  #share-link-btn, #print-btn, #picker, #select-all-btn, #clear-btn, footer { display: none !important; }
+}

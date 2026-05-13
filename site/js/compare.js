@@ -1,0 +1,319 @@
+// Comparison page: product picker + dynamic comparison table.
+// Selection persists via ?ids=a,b,c URL param so links can share specific comparisons.
+(function () {
+  'use strict';
+
+  if (!window.IMB_PRODUCTS) return;
+  const { groups, fields, products } = window.IMB_PRODUCTS;
+  const productMap = Object.fromEntries(products.map((p) => [p.id, p]));
+
+  // i18n helper — picks current-lang string from {pt,en,es} or returns scalar as-is.
+  function T(v) {
+    if (v == null) return '';
+    if (typeof v === 'object' && (v.pt || v.en || v.es)) {
+      return (window.IMB_I18N && window.IMB_I18N.pickLang) ? window.IMB_I18N.pickLang(v) : (v.pt || v.en || v.es || '');
+    }
+    return v;
+  }
+  const LANG = (window.IMB_I18N && window.IMB_I18N.lang) || 'pt';
+  const I18N_UI = {
+    selected:    { pt: 'selecionado',   en: 'selected',           es: 'seleccionado' },
+    selectedPl:  { pt: 'selecionados',  en: 'selected',           es: 'seleccionados' },
+    needMore:    { pt: 'Selecione mais 1 equipamento', en: 'Select 1 more equipment', es: 'Seleccione 1 equipo más' },
+    needMoreP:   { pt: 'Adicione ao menos mais um para gerar a comparação.', en: 'Add at least one more to generate the comparison.', es: 'Agregue al menos uno más para generar la comparación.' },
+    needTwo:     { pt: 'Selecione ao menos 2 equipamentos', en: 'Select at least 2 equipment', es: 'Seleccione al menos 2 equipos' },
+    needTwoP:    { pt: 'Toque nos cartões acima para adicionar à comparação. Um comparativo detalhado aparecerá aqui.', en: 'Tap the cards above to add to the comparison. A detailed comparison will appear here.', es: 'Toque las tarjetas arriba para agregar a la comparación. Aquí aparecerá un comparativo detallado.' },
+    compare:     { pt: 'Comparativo',   en: 'Comparison',          es: 'Comparativo' },
+    equipCount:  { pt: 'equipamentos',  en: 'equipment items',     es: 'equipos' },
+    sheet:       { pt: 'Ficha',         en: 'Data sheet',          es: 'Ficha' },
+    remove:      { pt: 'Remover',       en: 'Remove',              es: 'Quitar' },
+    shareLink:   { pt: 'Copiar link da comparação', en: 'Copy comparison link', es: 'Copiar enlace de comparación' },
+    linkCopied:  { pt: 'Link copiado!', en: 'Link copied!',        es: '¡Enlace copiado!' },
+    print:       { pt: 'Imprimir / Salvar PDF', en: 'Print / Save PDF', es: 'Imprimir / Guardar PDF' },
+    waCompare:   { pt: function(p, list){ return 'Olá! Estou comparando o ' + p + ' com ' + list + ' e gostaria de ajuda para escolher.'; },
+                   en: function(p, list){ return 'Hi! I\'m comparing the ' + p + ' with ' + list + ' and would like help choosing.'; },
+                   es: function(p, list){ return '¡Hola! Estoy comparando el ' + p + ' con ' + list + ' y quisiera ayuda para elegir.'; } },
+    waSingle:    { pt: function(p){ return 'Olá! Tenho interesse no ' + p + ' e gostaria de mais informações.'; },
+                   en: function(p){ return 'Hi! I\'m interested in the ' + p + ' and would like more information.'; },
+                   es: function(p){ return '¡Hola! Tengo interés en el ' + p + ' y quisiera más información.'; } },
+    joinAnd:     { pt: ' e ',           en: ' and ',               es: ' y ' },
+  };
+  function ui(key) {
+    var e = I18N_UI[key];
+    if (!e) return key;
+    return e[LANG] || e.pt;
+  }
+  function locale() { return LANG === 'pt' ? 'pt-BR' : (LANG === 'en' ? 'en-US' : 'es-AR'); }
+  function productDetailUrl(product) {
+    if (window.IMB_I18N && window.IMB_I18N.productDetailUrl) {
+      return window.IMB_I18N.productDetailUrl(product.id);
+    }
+    return 'produto.html?id=' + encodeURIComponent(product.id);
+  }
+
+  const pickerEl     = document.getElementById('picker');
+  const comparisonEl = document.getElementById('comparison');
+  const emptyEl      = document.getElementById('empty-state');
+  const countEl      = document.getElementById('selection-count');
+  const clearBtn     = document.getElementById('clear-btn');
+  const selectAllBtn = document.getElementById('select-all-btn');
+
+  if (!pickerEl || !comparisonEl) return;
+
+  let selected = readSelectionFromURL();
+
+  function readSelectionFromURL() {
+    const raw = new URLSearchParams(window.location.search).get('ids') || '';
+    const ids = raw.split(',').map((s) => s.trim()).filter((id) => productMap[id]);
+    return new Set(ids);
+  }
+
+  function writeSelectionToURL() {
+    const params = new URLSearchParams(window.location.search);
+    if (selected.size === 0) params.delete('ids');
+    else params.set('ids', Array.from(selected).join(','));
+    const qs = params.toString();
+    const url = window.location.pathname + (qs ? '?' + qs : '');
+    history.replaceState(null, '', url);
+  }
+
+  function toggle(id) {
+    if (selected.has(id)) selected.delete(id);
+    else selected.add(id);
+    writeSelectionToURL();
+    render();
+  }
+
+  function fmtNumber(n) {
+    if (n === null || n === undefined) return '—';
+    if (Number.isInteger(n)) return n.toLocaleString(locale());
+    return n.toLocaleString(locale(), { maximumFractionDigits: 2 });
+  }
+
+  function renderPicker() {
+    pickerEl.innerHTML = products.map((p) => {
+      const isOn = selected.has(p.id);
+      const ringClass = isOn ? 'ring-2 ring-primary border-primary' : 'border-surface-container-high hover:border-outline-variant';
+      const badgeClass = isOn ? 'bg-primary text-on-primary' : 'bg-surface-container-high text-on-surface-variant';
+      const badgeIcon = isOn ? 'check' : 'add';
+      return `
+        <button type="button" data-id="${p.id}" aria-pressed="${isOn}"
+          class="picker-card text-left bg-surface-container-lowest rounded-xl border-2 ${ringClass} overflow-hidden transition-all group">
+          <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
+            <img src="${p.image}" alt="${escapeAttr(p.name)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+            <span class="absolute top-2 right-2 w-7 h-7 rounded-full ${badgeClass} flex items-center justify-center shadow">
+              <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">${badgeIcon}</span>
+            </span>
+          </div>
+          <div class="p-3">
+            <div class="font-headline font-black text-sm md:text-base uppercase tracking-tight text-on-surface leading-tight">${escapeHTML(p.name)}</div>
+            <div class="text-[10px] md:text-xs text-on-surface-variant mt-1 leading-snug">${escapeHTML(T(p.subtitle))}</div>
+          </div>
+        </button>`;
+    }).join('');
+
+    pickerEl.querySelectorAll('.picker-card').forEach((btn) => {
+      btn.addEventListener('click', () => toggle(btn.dataset.id));
+    });
+
+    countEl.textContent = selected.size + ' ' + (selected.size === 1 ? ui('selected') : ui('selectedPl'));
+  }
+
+  function maxFor(fieldKey, picks) {
+    let max = 0;
+    picks.forEach((p) => {
+      const v = p.specs[fieldKey];
+      if (typeof v === 'number' && v > max) max = v;
+    });
+    return max;
+  }
+
+  function renderCell(field, product, max) {
+    const v = product.specs[field.key];
+    const unitStr = field.unit ? T(field.unit) : '';
+    const unit = unitStr ? ` <span class="text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider ml-1">${unitStr}</span>` : '';
+
+    if (v === null || v === undefined) {
+      return `<div class="text-on-surface-variant/60 text-sm italic">N/A</div>`;
+    }
+
+    if (field.type === 'bool') {
+      return v
+        ? `<span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-tertiary/10 text-tertiary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span></span>`
+        : `<span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-on-surface/5 text-on-surface-variant/60"><span class="material-symbols-outlined">cancel</span></span>`;
+    }
+
+    if (field.type === 'bar') {
+      const pct = max > 0 ? Math.max(4, Math.round((v / max) * 100)) : 0;
+      return `
+        <div class="space-y-2">
+          <div class="font-bold text-on-surface text-sm md:text-base">${fmtNumber(v)}${unit}</div>
+          <div class="cmp-bar-track">
+            <div class="cmp-bar-fill" style="width:${pct}%"></div>
+          </div>
+        </div>`;
+    }
+
+    if (field.type === 'number') {
+      return `<div class="font-bold text-on-surface text-sm md:text-base">${fmtNumber(v)}${unit}</div>`;
+    }
+
+    // text (may be multilang object)
+    return `<div class="text-on-surface text-sm leading-snug">${escapeHTML(T(v))}</div>`;
+  }
+
+  function renderComparison() {
+    const picks = Array.from(selected).map((id) => productMap[id]).filter(Boolean);
+
+    if (picks.length < 2) {
+      comparisonEl.innerHTML = '';
+      emptyEl.classList.toggle('hidden', picks.length === 0);
+      if (picks.length === 1) {
+        emptyEl.querySelector('h3').textContent = ui('needMore');
+        emptyEl.querySelector('p').textContent = ui('needMoreP');
+      } else {
+        emptyEl.querySelector('h3').textContent = ui('needTwo');
+        emptyEl.querySelector('p').textContent = ui('needTwoP');
+      }
+      return;
+    }
+    emptyEl.classList.add('hidden');
+
+    const colCount = picks.length;
+    const colWidth = 'minmax(180px, 1fr)';
+    const gridTemplate = `minmax(180px, 220px) repeat(${colCount}, ${colWidth})`;
+
+    // Header row — inclui CTA WhatsApp contextual por produto
+    const otherNames = picks.filter((x) => x.id !== '__placeholder__').map((x) => x.name);
+    const headerCells = picks.map((p) => {
+      const compareList = picks.filter((x) => x.id !== p.id).map((x) => x.name).join(ui('joinAnd'));
+      const waMsg = compareList
+        ? I18N_UI.waCompare[LANG](p.name, compareList)
+        : I18N_UI.waSingle[LANG](p.name);
+      const detailUrl = productDetailUrl(p);
+      return `
+      <div class="cmp-head-cell">
+        <a href="${detailUrl}" class="block group">
+          <div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container mb-3">
+            <img src="${p.image}" alt="${escapeAttr(p.name)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="font-headline font-black text-base md:text-lg uppercase tracking-tight leading-tight text-on-surface">${escapeHTML(p.name)}</div>
+          <div class="text-[10px] md:text-xs text-on-surface-variant mt-1">${escapeHTML(T(p.subtitle))}</div>
+        </a>
+        <div class="mt-3 flex flex-wrap gap-2 items-center">
+          <a href="#" class="wa-link inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#1fb855] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded transition-colors"
+             data-wa-msg="${escapeAttr(waMsg)}" target="_blank" rel="noopener">
+            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">chat</span>WhatsApp
+          </a>
+          <a href="${detailUrl}" class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-primary hover:underline">
+            ${ui('sheet')} <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+          </a>
+          <button type="button" data-remove="${p.id}" class="cmp-remove inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-on-surface-variant hover:text-on-surface">
+            <span class="material-symbols-outlined text-[14px]">close</span>${ui('remove')}
+          </button>
+        </div>
+      </div>`;
+    }).join('');
+
+    let html = `
+      <div class="cmp-table-wrap rounded-xl border border-surface-container-high bg-surface-container-lowest overflow-hidden">
+        <div class="cmp-scroll overflow-x-auto">
+          <div class="cmp-grid" style="grid-template-columns:${gridTemplate};">
+            <div class="cmp-head-cell cmp-head-label flex items-end">
+              <div>
+                <div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">${ui('compare')}</div>
+                <div class="font-headline font-black text-lg uppercase tracking-tight">${colCount} ${ui('equipCount')}</div>
+              </div>
+            </div>
+            ${headerCells}
+    `;
+
+    groups.forEach((g) => {
+      const groupFields = fields.filter((f) => f.group === g.id);
+      // Skip groups where every selected product is N/A for every field — keeps view tight
+      const anyData = groupFields.some((f) => picks.some((p) => p.specs[f.key] !== null && p.specs[f.key] !== undefined));
+      if (!anyData) return;
+
+      html += `
+        <div class="cmp-section-head" style="grid-column:1 / -1;">
+          <span class="w-1.5 h-5 bg-primary inline-block align-middle mr-2"></span>
+          ${escapeHTML(T(g.label))}
+        </div>`;
+
+      groupFields.forEach((field) => {
+        const max = field.type === 'bar' ? maxFor(field.key, picks) : 0;
+        html += `<div class="cmp-row-label">${escapeHTML(T(field.label))}</div>`;
+        picks.forEach((p) => {
+          html += `<div class="cmp-cell">${renderCell(field, p, max)}</div>`;
+        });
+      });
+    });
+
+    html += `
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 flex flex-wrap gap-3 justify-end">
+        <button type="button" id="share-link-btn" class="text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-md bg-surface-container-high hover:bg-surface-dim transition-colors flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">link</span>${ui('shareLink')}
+        </button>
+        <button type="button" id="print-btn" class="text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-md bg-on-background text-white hover:bg-inverse-surface transition-colors flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">print</span>${ui('print')}
+        </button>
+      </div>
+    `;
+
+    comparisonEl.innerHTML = html;
+
+    comparisonEl.querySelectorAll('.cmp-remove').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggle(btn.dataset.remove);
+      });
+    });
+
+    const shareBtn = document.getElementById('share-link-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        const url = window.location.href;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(() => {
+            shareBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>' + ui('linkCopied');
+            setTimeout(() => {
+              shareBtn.innerHTML = '<span class="material-symbols-outlined text-sm">link</span>' + ui('shareLink');
+            }, 2000);
+          });
+        }
+      });
+    }
+    const printBtn = document.getElementById('print-btn');
+    if (printBtn) printBtn.addEventListener('click', () => window.print());
+  }
+
+  function render() {
+    renderPicker();
+    renderComparison();
+  }
+
+  function escapeHTML(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHTML(s); }
+
+  clearBtn.addEventListener('click', () => {
+    selected = new Set();
+    writeSelectionToURL();
+    render();
+  });
+  selectAllBtn.addEventListener('click', () => {
+    selected = new Set(products.map((p) => p.id));
+    writeSelectionToURL();
+    render();
+  });
+
+  // First render
+  render();
+})();
