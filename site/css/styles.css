@@ -18,10 +18,10 @@
 }
 
 .wa-gradient {
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  background: linear-gradient(135deg, var(--imb-success) 0%, var(--imb-blue-dark) 100%);
 }
 .wa-gradient:hover {
-  background: linear-gradient(135deg, #1fb855 0%, #0f6f64 100%);
+  background: linear-gradient(135deg, rgba(76, 202, 57, 0.84) 0%, var(--imb-blue-dark) 100%);
 }
 
 /* Pulsa pontinho verde indicando online/horário comercial. */
@@ -39,14 +39,14 @@
   width: 8px;
   height: 8px;
   border-radius: 9999px;
-  background: #25D366;
-  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  background: var(--imb-success);
+  box-shadow: 0 0 0 0 rgba(76, 202, 57, 0.55);
   animation: wa-hint-pulse 2s infinite;
 }
 @keyframes wa-hint-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
-  70%  { box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);  }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);    }
+  0%   { box-shadow: 0 0 0 0 rgba(76, 202, 57, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(76, 202, 57, 0);  }
+  100% { box-shadow: 0 0 0 0 rgba(76, 202, 57, 0);    }
 }
 @media (prefers-reduced-motion: reduce) {
   .wa-hint::before { animation: none; }
@@ -75,8 +75,8 @@ h1, h2, h3, h4 {
 }
 
 @keyframes wa-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76, 202, 57, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(76, 202, 57, 0); }
 }
 .wa-fab {
   animation: wa-pulse 2.5s infinite;
@@ -113,7 +113,7 @@ h1, h2, h3, h4 {
 
 ::selection {
   background: #ea7805;
-  color: #212529;
+  color: #1f2322;
 }
 
 /* ========== Clients marquee ========== */
@@ -212,7 +212,7 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   font-size: 0.78rem;
   letter-spacing: 0.08em;
-  color: #212529;
+  color: #1f2322;
   border-top: 1px solid #ced4da33;
   border-bottom: 1px solid #ced4da33;
 }
@@ -246,8 +246,8 @@ h1, h2, h3, h4 {
   #share-link-btn, #print-btn, #picker, #select-all-btn, #clear-btn, footer { display: none !important; }
 }
 :root {
-  --imb-black: #000000;
-  --imb-body: #212529;
+  --imb-black: #1f2322;
+  --imb-body: #1f2322;
   --imb-orange: #ea7805;
   --imb-red: #e94f1b;
   --imb-blue-dark: #272e63;
@@ -268,8 +268,8 @@ h1, h2, h3, h4 {
   --imb-transition: 400ms ease-in-out;
   --imb-radius-card: 20px;
   --imb-radius-control: 8px;
-  --imb-shadow-1: 0 8px 24px rgba(33, 37, 41, 0.08);
-  --imb-shadow-2: 0 18px 48px rgba(33, 37, 41, 0.16);
+  --imb-shadow-1: 0 8px 24px rgba(31, 35, 34, 0.08);
+  --imb-shadow-2: 0 12px 40px rgba(31, 35, 34, 0.12);
   --imb-container: 1110px;
 }
 
@@ -344,6 +344,15 @@ h6,
 .bg-inverse-primary {
   background-color: var(--imb-body) !important;
 }
+.bg-success {
+  background-color: var(--imb-success) !important;
+}
+.bg-success-soft {
+  background-color: rgba(76, 202, 57, 0.16) !important;
+}
+.hover\:bg-success-strong:hover {
+  background-color: rgba(76, 202, 57, 0.84) !important;
+}
 .bg-primary-container\/20,
 .bg-primary-container\/30,
 .bg-primary-container\/40 {
@@ -395,6 +404,9 @@ h6,
 .text-inverse-on-surface {
   color: var(--imb-neutral-100) !important;
 }
+.text-success {
+  color: var(--imb-success) !important;
+}
 
 .border-primary,
 .border-primary-container {
@@ -414,7 +426,8 @@ h6,
 }
 
 .hover\:bg-primary:hover,
-.hover\:bg-primary-container:hover {
+.hover\:bg-primary-container:hover,
+.hover\:bg-primary-fixed-dim:hover {
   background-color: var(--imb-red) !important;
 }
 .hover\:bg-surface-container-high:hover,
@@ -433,6 +446,7 @@ h6,
   color: var(--imb-white) !important;
 }
 
+.rounded-lg,
 .rounded-xl,
 .rounded-2xl,
 .client-logo,
@@ -441,7 +455,6 @@ h6,
 }
 .rounded,
 .rounded-md,
-.rounded-lg,
 input,
 select,
 textarea {
@@ -464,6 +477,11 @@ textarea,
 .cmp-bar-fill {
   transition-duration: 400ms !important;
   transition-timing-function: ease-in-out !important;
+}
+.duration-300,
+.duration-500,
+.duration-700 {
+  transition-duration: 400ms !important;
 }
 
 .shadow-sm,

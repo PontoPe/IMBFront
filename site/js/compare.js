@@ -201,7 +201,7 @@
           <div class="text-[10px] md:text-xs text-on-surface-variant mt-1">${escapeHTML(T(p.subtitle))}</div>
         </a>
         <div class="mt-3 flex flex-wrap gap-2 items-center">
-          <a href="#" class="wa-link inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#1fb855] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded transition-colors"
+          <a href="#" class="wa-link inline-flex items-center gap-1.5 bg-success hover:bg-success-strong text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded transition-colors"
              data-wa-msg="${escapeAttr(waMsg)}" target="_blank" rel="noopener">
             <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">chat</span>WhatsApp
           </a>

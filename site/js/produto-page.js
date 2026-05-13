@@ -68,7 +68,7 @@
   if (!prod) {
     var catalogUrl = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('produtos') : 'produtos.html';
     main.innerHTML = ''
-      + '<section class="max-w-3xl mx-auto px-6 md:px-8 py-20 md:py-32 text-center">'
+      + '<section class="max-w-3xl mx-auto px-4 md:px-8 py-20 md:py-32 text-center">'
       +   '<span class="material-symbols-outlined text-5xl text-on-surface-variant mb-4">search_off</span>'
       +   '<h1 class="font-headline font-black text-3xl md:text-4xl uppercase tracking-tight mb-4">' + escHtml(ui('notFound')) + '</h1>'
       +   '<p class="text-on-surface-variant mb-8">' + escHtml(ui('notFoundDesc')) + '</p>'
@@ -102,7 +102,7 @@
   // ---- Hero ----
   var hero = ''
     + '<section class="relative w-full bg-surface-container-low overflow-hidden">'
-    +   '<div class="max-w-7xl mx-auto px-6 md:px-8 py-10 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">'
+    +   '<div class="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">'
     +     '<div class="lg:col-span-7 relative fade-in-up">'
     +       '<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container/20 rounded-full blur-3xl"></div>'
     +       '<div class="relative z-10 group">'
@@ -187,7 +187,7 @@
 
   var specsSection = ''
     + '<section class="py-16 md:py-24 bg-surface">'
-    +   '<div class="max-w-7xl mx-auto px-6 md:px-8">'
+    +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
     +     '<div class="mb-12 md:mb-16 fade-in-up">'
     +       '<h2 class="text-2xl md:text-3xl font-black font-headline tracking-tight uppercase border-l-8 border-primary-container pl-6">' + escHtml(ui('techSpecs')) + '</h2>'
     +     '</div>'
@@ -218,7 +218,7 @@
     }).join('');
     casesBlock = ''
       + '<section class="py-16 md:py-20 bg-surface-container-low">'
-      +   '<div class="max-w-7xl mx-auto px-6 md:px-8">'
+      +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
       +     '<h2 class="font-headline font-extrabold text-2xl md:text-3xl tracking-tight mb-8 border-l-8 border-primary pl-6">' + escHtml(ui('relatedProj')) + '</h2>'
       +     '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">' + caseCards + '</div>'
       +   '</div>'
@@ -228,7 +228,7 @@
   // ---- CTA + Comparar ----
   var ctaBlock = ''
     + '<section class="py-16 md:py-20 bg-surface">'
-    +   '<div class="max-w-7xl mx-auto px-6 md:px-8">'
+    +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
     +     '<div class="bg-primary-container/20 border border-primary-container/40 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">'
     +       '<div>'
     +         '<h3 class="font-headline font-black text-2xl md:text-3xl uppercase tracking-tight leading-tight mb-2">' + escHtml(ui('compareTitle')) + '</h3>'
@@ -238,7 +238,7 @@
     +         '<a href="' + escHtml(compararUrl) + '?ids=' + encodeURIComponent(prod.id) + '" class="bg-on-background hover:bg-inverse-surface text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2">'
     +           '<span class="material-symbols-outlined text-sm">compare_arrows</span>' + escHtml(ui('compareBtn'))
     +         '</a>'
-    +         '<a href="#" class="wa-link bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2" data-wa-msg="' + escHtml(waMsg) + '" target="_blank" rel="noopener">'
+    +         '<a href="#" class="wa-link bg-success hover:bg-success-strong text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2" data-wa-msg="' + escHtml(waMsg) + '" target="_blank" rel="noopener">'
     +           '<span class="material-symbols-outlined text-sm" style="font-variation-settings:\'FILL\' 1;">chat</span>WhatsApp'
     +         '</a>'
     +       '</div>'

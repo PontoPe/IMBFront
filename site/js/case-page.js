@@ -61,7 +61,7 @@
 
   if (!c) {
     main.innerHTML = ''
-      + '<section class="max-w-3xl mx-auto px-6 md:px-8 py-20 md:py-32 text-center">'
+      + '<section class="max-w-3xl mx-auto px-4 md:px-8 py-20 md:py-32 text-center">'
       +   '<span class="material-symbols-outlined text-5xl text-on-surface-variant mb-4">search_off</span>'
       +   '<h1 class="font-headline font-black text-3xl md:text-4xl uppercase tracking-tight mb-4">' + escHtml(ui('notFound')) + '</h1>'
       +   '<p class="text-on-surface-variant mb-8">' + escHtml(ui('notFoundDesc')) + '</p>'
@@ -96,7 +96,7 @@
     +     '<img class="w-full h-full object-cover opacity-50" src="' + escHtml(c.hero_image) + '" alt="' + escHtml(cTitle) + '" />'
     +     '<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/70 to-inverse-surface/30"></div>'
     +   '</div>'
-    +   '<div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">'
+    +   '<div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-28">'
     +     '<div class="flex items-center gap-2 text-xs text-white/70 mb-6">'
     +       '<a href="' + escHtml(casesUrl) + '" class="hover:text-primary-container transition-colors">' + escHtml(ui('featured')) + '</a>'
     +       '<span class="material-symbols-outlined text-xs">chevron_right</span>'
@@ -114,7 +114,7 @@
     +     '<p class="text-primary-container font-bold uppercase tracking-widest text-sm mb-6">' + escHtml(cSubtitle) + '</p>'
     +     '<p class="text-white/85 text-base md:text-lg leading-relaxed max-w-2xl mb-8">' + escHtml(cSummary) + '</p>'
     +     '<div class="flex flex-wrap gap-3">'
-    +       '<a href="#" class="wa-link inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded shadow-lg transition-colors" data-wa-msg="' + escHtml(waMsgFull) + '" target="_blank" rel="noopener">'
+    +       '<a href="#" class="wa-link inline-flex items-center gap-2 bg-success hover:bg-success-strong text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded shadow-lg transition-colors" data-wa-msg="' + escHtml(waMsgFull) + '" target="_blank" rel="noopener">'
     +         '<span class="material-symbols-outlined text-base" style="font-variation-settings:\'FILL\' 1;">chat</span>' + escHtml(ui('talkAbout'))
     +       '</a>'
     +       '<a href="' + escHtml(contatoUrl) + '" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur hover:bg-white/20 text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded border border-white/20 transition-colors">'
@@ -139,7 +139,7 @@
     }).join('');
     metricsBlock = ''
       + '<section class="py-12 md:py-16 bg-surface-container-low">'
-      +   '<div class="max-w-7xl mx-auto px-6 md:px-8">'
+      +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
       +     '<h2 class="font-headline font-extrabold text-2xl md:text-3xl tracking-tight mb-8 border-l-8 border-primary pl-6">' + escHtml(ui('numbers')) + '</h2>'
       +     '<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">' + metricsHtml + '</div>'
       +   '</div>'
@@ -173,7 +173,7 @@
     }).join('');
     equipBlock = ''
       + '<section class="py-16 md:py-20 bg-surface">'
-      +   '<div class="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10">'
+      +   '<div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10">'
       +     '<div class="lg:col-span-4">'
       +       '<h2 class="font-headline font-extrabold text-2xl md:text-3xl tracking-tight mb-4 border-l-8 border-primary pl-6">' + escHtml(ui('equipUsed')) + '</h2>'
       +       '<p class="text-on-surface-variant text-sm leading-relaxed">' + escHtml(cClient ? ui('clientLabel') + cClient : '') + '</p>'
@@ -191,7 +191,7 @@
     }).join('');
     storyBlock = ''
       + '<section class="py-16 md:py-20 bg-surface-container-low">'
-      +   '<div class="max-w-3xl mx-auto px-6 md:px-8">'
+      +   '<div class="max-w-3xl mx-auto px-4 md:px-8">'
       +     '<h2 class="font-headline font-extrabold text-2xl md:text-3xl tracking-tight mb-8 border-l-8 border-primary pl-6">' + escHtml(ui('story')) + '</h2>'
       +     '<div class="space-y-6 text-on-surface-variant leading-loose text-sm md:text-base">' + paragraphs + '</div>'
       +   '</div>'
@@ -204,7 +204,7 @@
     var t = c.testimonial;
     testimonialBlock = ''
       + '<section class="py-16 md:py-20 bg-on-background text-white">'
-      +   '<div class="max-w-4xl mx-auto px-6 md:px-8 text-center">'
+      +   '<div class="max-w-4xl mx-auto px-4 md:px-8 text-center">'
       +     '<span class="material-symbols-outlined text-primary-container text-5xl mb-4 inline-block">format_quote</span>'
       +     '<blockquote class="font-headline font-black text-2xl md:text-3xl leading-tight tracking-tight mb-8">"' + escHtml(T(t.quote)) + '"</blockquote>'
       +     '<div class="flex items-center justify-center gap-3">'
@@ -236,14 +236,14 @@
   }).join('');
   var ctaBlock = ''
     + '<section class="py-16 md:py-20 bg-surface">'
-    +   '<div class="max-w-7xl mx-auto px-6 md:px-8">'
+    +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
     +     '<div class="bg-primary-container/20 border border-primary-container/40 rounded-2xl p-8 md:p-12 mb-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">'
     +       '<div>'
     +         '<h3 class="font-headline font-black text-2xl md:text-3xl uppercase tracking-tight leading-tight mb-2">' + escHtml(ui('similar')) + '</h3>'
     +         '<p class="text-on-surface-variant max-w-xl">' + escHtml(ui('similarDesc')) + '</p>'
     +       '</div>'
     +       '<div class="flex flex-wrap gap-3 shrink-0">'
-    +         '<a href="#" class="wa-link bg-[#25D366] hover:bg-[#1fb855] text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2" data-wa-msg="' + escHtml(waMsgFull) + '" target="_blank" rel="noopener">'
+    +         '<a href="#" class="wa-link bg-success hover:bg-success-strong text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2" data-wa-msg="' + escHtml(waMsgFull) + '" target="_blank" rel="noopener">'
     +           '<span class="material-symbols-outlined text-sm" style="font-variation-settings:\'FILL\' 1;">chat</span>WhatsApp'
     +         '</a>'
     +         '<a href="' + escHtml(contatoUrl) + '" class="bg-on-background hover:bg-inverse-surface text-white font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors flex items-center gap-2">'

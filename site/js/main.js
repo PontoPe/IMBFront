@@ -211,7 +211,7 @@ window.IMB_resolveWaMsg = function (el) {
       +     '</div>'
       +   '</a>'
       +   '<div class="absolute top-3 right-3 flex gap-2">'
-      +     '<a href="#" class="wa-link inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1fb855] transition-colors" '
+      +     '<a href="#" class="wa-link inline-flex items-center justify-center w-9 h-9 rounded-full bg-success text-white shadow-lg hover:bg-success-strong transition-colors" '
       +       'data-wa-msg="' + escHtml(waMsg) + '" target="_blank" rel="noopener">'
       +       '<span class="material-symbols-outlined text-base" style="font-variation-settings:\'FILL\' 1;">chat</span>'
       +     '</a>'
