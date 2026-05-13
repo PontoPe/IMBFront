@@ -783,8 +783,16 @@ textarea:disabled,
   --tw-gradient-to: rgba(31, 35, 34, 0.30) var(--tw-gradient-to-position) !important;
 }
 
-/* Footer is always black with light text */
-footer {
+/* Footer is always black with light text.
+   Selectors stacked because the HTML still carries Tailwind utilities like
+   `bg-surface-container-low` whose own class-level `!important` would otherwise
+   outrank a plain `footer` rule. */
+footer,
+footer.bg-surface-container-low,
+footer.bg-surface-container,
+footer.bg-white,
+footer.bg-surface,
+footer.bg-background {
   background-color: var(--imb-black) !important;
   color: rgba(255, 255, 255, 0.72) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
