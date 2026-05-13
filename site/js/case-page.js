@@ -95,7 +95,7 @@
     + '<section class="relative bg-inverse-surface text-white overflow-hidden">'
     +   '<div class="absolute inset-0 z-0">'
     +     '<img class="w-full h-full object-cover opacity-50" src="' + escHtml(c.hero_image) + '" alt="' + escHtml(cTitle) + '" />'
-    +     '<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/70 to-inverse-surface/30"></div>'
+    +     '<div class="absolute inset-0 bg-inverse-surface/60"></div>'
     +   '</div>'
     +   '<div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-28">'
     +     '<div class="flex items-center gap-2 text-xs text-white/70 mb-6">'

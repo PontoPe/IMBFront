@@ -105,7 +105,6 @@
     + '<section class="relative w-full bg-surface-container-low overflow-hidden">'
     +   '<div class="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">'
     +     '<div class="lg:col-span-7 relative fade-in-up">'
-    +       '<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary-container/20 rounded-full blur-3xl"></div>'
     +       '<div class="relative z-10 group">'
     +         '<img alt="' + escHtml(prod.name) + '" class="w-full aspect-[4/3] object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]" src="' + escHtml(prod.image) + '" />'
     +         '<div class="absolute bottom-4 left-4 bg-on-surface/90 backdrop-blur-md text-white px-4 py-2 rounded-lg flex items-center gap-2">'

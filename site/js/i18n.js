@@ -28,14 +28,14 @@ window.IMB_I18N = (function () {
   var DICT = {
     'nav.home':        { pt: 'Início',     en: 'Home',         es: 'Inicio' },
     'nav.products':    { pt: 'Produtos',   en: 'Products',     es: 'Productos' },
-    'nav.cases':       { pt: 'Cases',      en: 'Cases',        es: 'Casos' },
-    'nav.about':       { pt: 'Sobre',      en: 'About',        es: 'Nosotros' },
+    'nav.cases':       { pt: 'Nossos Projetos', en: 'Our Projects', es: 'Nuestros Proyectos' },
+    'nav.about':       { pt: 'Sobre a IMB', en: 'About IMB', es: 'Sobre IMB' },
     'nav.contact':     { pt: 'Contato',    en: 'Contact',      es: 'Contacto' },
     'nav.compare':     { pt: 'Comparar',   en: 'Compare',      es: 'Comparar' },
     'nav.menu':        { pt: 'Menu',       en: 'Menu',         es: 'Menú' },
 
     'btn.quote':       { pt: 'Orçamento',          en: 'Get a Quote',     es: 'Cotización' },
-    'btn.requestQuote':{ pt: 'Solicitar Orçamento',en: 'Request a Quote', es: 'Solicitar Cotización' },
+    'btn.requestQuote':{ pt: 'Solicite um orçamento', en: 'Request a Quote', es: 'Solicitar Cotización' },
     'btn.whatsapp':    { pt: 'WhatsApp',           en: 'WhatsApp',        es: 'WhatsApp' },
     'btn.viewCatalog': { pt: 'Ver Catálogo',       en: 'View Catalog',    es: 'Ver Catálogo' },
     'btn.contact':     { pt: 'Fale Conosco',       en: 'Contact Us',      es: 'Contáctanos' },

@@ -46,23 +46,24 @@
 </head>
 <body class="bg-surface text-on-surface">
 
-  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20">
-      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></a>
-      <div class="hidden lg:flex items-center space-x-8 font-headline font-semibold tracking-tight text-sm uppercase">
-        <a class="text-secondary hover:text-primary transition-colors" href="index.html">Início</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="produtos.html">Produtos</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="#sobre">Sobre</a>
-        <a class="text-primary border-b-2 border-primary pb-1" href="contato.html">Entre em contato</a>
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-4">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
+        <a class="nav-link" href="index.html">Início</a>
+        <a class="nav-link" href="produtos.html">Produtos</a>
+        <a class="nav-link" href="cases.html">Nossos Projetos</a>
+        <a class="nav-link is-active" href="contato.html#sobre">Sobre a IMB</a>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 md:gap-3">
         <div class="hidden md:flex items-center gap-1 text-xs font-bold uppercase tracking-widest">
-          <a class="px-2 py-1 rounded bg-surface-container-highest text-on-surface" href="contato.html">PT</a>
-          <a class="px-2 py-1 rounded hover:bg-surface-container-high" href="en/contact.html">ENG</a>
-          <a class="px-2 py-1 rounded hover:bg-surface-container-high" href="es/contacto.html">ESP</a>
+          <a class="lang-pill is-current" href="contato.html">PT</a>
+          <a class="lang-pill" href="en/contact.html">ENG</a>
+          <a class="lang-pill" href="es/contacto.html">ESP</a>
         </div>
-        <a href="#contato" class="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-bold bg-primary-container text-on-primary-container rounded-md hover:bg-primary transition-colors uppercase tracking-wider">Solicitar Orçamento</a>
-        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-md hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
+        <a href="contato.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
+        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
           <span class="material-symbols-outlined text-2xl">menu</span>
         </button>
       </div>
@@ -72,31 +73,28 @@
   <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
   <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
     <div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high">
-      <span class="font-headline font-black text-lg uppercase tracking-tighter">Menu</span>
-      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-md hover:bg-surface-container-high" aria-label="Fechar menu"><span class="material-symbols-outlined text-2xl">close</span></button>
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" aria-label="Fechar menu"><span class="material-symbols-outlined text-2xl">close</span></button>
     </div>
     <div class="flex-1 overflow-y-auto py-6 px-6">
       <div class="space-y-1">
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="index.html">Início</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="produtos.html">Produtos</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="pavimentadora.html">— Pavimentadoras</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="extrusora.html">— Extrusoras</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="comparar.html">Comparar Equipamentos</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg" href="#sobre">Sobre Nós</a>
-        <a class="block px-4 py-3 font-headline font-bold text-primary bg-primary-container/20 rounded-lg" href="#contato">Entre em contato</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="index.html">Início</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="produtos.html">Produtos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="cases.html">Nossos Projetos</a>
+        <a class="block px-4 py-3 font-headline font-bold text-primary bg-primary-container/20 rounded-lg" href="contato.html#sobre">Sobre a IMB</a>
       </div>
       <div class="mt-8 space-y-3">
-        <a href="#contato" class="block w-full text-center px-6 py-3 bg-primary-container text-on-primary-container hover:bg-primary transition-colors font-bold text-sm uppercase tracking-wider rounded-md">Solicitar Orçamento</a>
-        <a href="#" class="wa-link block w-full text-center px-6 py-3 wa-gradient text-white font-bold text-sm uppercase tracking-wider rounded-md" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="contato.html" class="flex w-full btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="flex w-full btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
       </div>
     </div>
   </div>
 
-  <main class="pt-20">
+<main class="pt-20">
     <section class="relative h-[400px] md:h-[500px] flex items-center overflow-hidden bg-inverse-surface">
       <div class="absolute inset-0 z-0">
         <img class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWWZdvD6yE4D54_S1TaK6ZGBB4JPmIRMKz3VAZmPnjCCQRlru0vAt3RDLKKpRqQfTO8pbB_WKsm3VIwrn9F6vckdgMCZAwE8gnQSZ5Az8pd99RFx_CCm7vCnMH3jl_apoMa-SCy5G08GtEacLJvWCqmlSH1eXZb8Z4Socrqydqj-DgIM5P_wnuuEFW-0bsqeoVGk0WURL9GvQEuPVnmGptg3qR2qdEyT5C-cr8mM6i2QZcq7fcJcd_7Y2PHxos1MAPiTuOp3UKwGLV" alt="Obra de infraestrutura IMB Brasil" />
-        <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/60 to-transparent"></div>
+        <div class="absolute inset-0 bg-inverse-surface/60"></div>
       </div>
       <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full fade-in-up">
         <div class="max-w-2xl">
@@ -204,9 +202,6 @@
     </section>
 
     <section id="presenca" class="py-16 md:py-24 bg-inverse-surface text-white scroll-mt-20 relative overflow-hidden">
-      <div class="absolute -top-32 -right-32 w-96 h-96 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-tertiary/10 rounded-full blur-3xl pointer-events-none"></div>
-
       <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
         <div class="mb-10 md:mb-14 fade-in-up">
           <div class="flex items-center gap-4 mb-4">
@@ -290,13 +285,13 @@
               <p class="text-xs text-surface-container-high/70 leading-relaxed">AM · PA · RO · TO — Mobilização técnica para projetos estruturais.</p>
             </div>
 
-            <div class="bg-primary-container/10 border border-primary-container/30 rounded-xl p-5 md:p-6">
+            <div class="bg-on-background/60 border border-white/10 rounded-xl p-5 md:p-6 hover:border-primary-container/40 transition-colors">
               <div class="flex items-center justify-between mb-3">
                 <span class="text-[10px] font-black uppercase tracking-widest text-primary-container">Exportação</span>
-                <span class="material-symbols-outlined text-primary-container">public</span>
+                <span class="material-symbols-outlined text-white/50">public</span>
               </div>
               <h4 class="font-headline font-bold text-lg uppercase tracking-tight mb-2">América Latina</h4>
-              <p class="text-xs text-surface-container-high/80 leading-relaxed">Argentina · Paraguai · Chile · Bolívia — Exportação direta com suporte regional.</p>
+              <p class="text-xs text-surface-container-high/70 leading-relaxed">Argentina · Paraguai · Chile · Bolívia — Exportação direta com suporte regional.</p>
             </div>
           </div>
         </div>
@@ -343,7 +338,7 @@
                 <label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Mensagem</label>
                 <textarea name="mensagem" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm transition-all" placeholder="Descreva sua necessidade, tipo de obra, prazo..." rows="4"></textarea>
               </div>
-              <button class="w-full forged-gradient text-white font-headline font-bold py-4 md:py-5 rounded shadow-lg hover:scale-[1.01] active:scale-[0.98] transition-all text-sm md:text-base uppercase tracking-wider" type="submit">
+              <button class="w-full btn-solid-orange text-white font-headline font-bold py-4 md:py-5 rounded-full shadow-lg hover:scale-[1.01] active:scale-[0.98] transition-all text-sm md:text-base uppercase tracking-wider" type="submit">
                 Enviar Solicitação
               </button>
               <p class="text-xs text-on-surface-variant text-center">Ao enviar, você será redirecionado ao WhatsApp com sua mensagem pré-preenchida.</p>
@@ -431,7 +426,7 @@
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12 px-4 md:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto">
       <div class="space-y-4">
-        <div class="site-logo-footer"><img src="images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></div>
+        <div class="site-logo-footer"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
         <p class="text-xs text-on-surface-variant leading-relaxed">Líder em tecnologia de pavimentação e extrusão de concreto na América Latina.</p>
       </div>
       <div class="space-y-4">

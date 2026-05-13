@@ -17,33 +17,53 @@
   <script>tailwind.config={theme:{extend:{colors:{"surface-container-high":"#e9ecef","surface-dim":"#dee2e6","inverse-surface":"#272e63","on-primary-container":"#ffffff","primary-container":"#ea7805","outline-variant":"#ced4da","secondary-container":"#e9ecef","on-primary-fixed":"#1f2322","on-primary-fixed-variant":"#e94f1b","primary-fixed":"#fdc531","on-background":"#1f2322","primary-fixed-dim":"#fdc531","on-secondary":"#ffffff","on-secondary-container":"#6c757d","on-tertiary-container":"#272e63","on-tertiary-fixed":"#272e63","on-tertiary-fixed-variant":"#272e63","surface-bright":"#f8f9fa","surface-container-low":"#f8f9fa","on-surface-variant":"#6c757d","inverse-primary":"#fdc531","surface-container-highest":"#dee2e6","surface-container-lowest":"#ffffff","on-surface":"#1f2322","tertiary-container":"#e9ecef","tertiary-fixed-dim":"#dee2e6","background":"#f8f9fa","surface-tint":"#ea7805","inverse-on-surface":"#f8f9fa","tertiary":"#272e63","surface-container":"#e9ecef","surface":"#f8f9fa","tertiary-fixed":"#e9ecef","on-primary":"#ffffff","secondary":"#6c757d","primary":"#ea7805","outline":"#6c757d"},borderRadius:{"DEFAULT":"8px","lg":"8px","xl":"20px","full":"9999px"},fontFamily:{"headline":["Poppins"],"body":["Roboto"],"label":["Roboto"]}}}};</script>
 </head>
 <body class="bg-surface text-on-surface">
-  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20">
-      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></a>
-      <div class="hidden lg:flex items-center space-x-8 font-headline font-semibold tracking-tight text-sm uppercase">
-        <a class="text-secondary hover:text-primary transition-colors" href="index.html">Inicio</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="productos.html">Productos</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="casos.html">Casos</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="#nosotros">Nosotros</a>
-        <a class="text-primary border-b-2 border-primary pb-1" href="contacto.html">Contacto</a>
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-4">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="productos.html">Productos</a>
+        <a class="nav-link" href="casos.html">Nuestros Proyectos</a>
+        <a class="nav-link is-active" href="contacto.html#nosotros">Sobre IMB</a>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 md:gap-3">
         <div class="hidden md:flex items-center gap-1 text-xs font-bold uppercase tracking-widest">
-          <a class="px-2 py-1 rounded hover:bg-surface-container-high" href="../contato.html">PT</a>
-          <a class="px-2 py-1 rounded hover:bg-surface-container-high" href="../en/contact.html">ENG</a>
-          <a class="px-2 py-1 rounded bg-surface-container-highest text-on-surface" href="contacto.html">ESP</a>
+          <a class="lang-pill" href="../contato.html">PT</a>
+          <a class="lang-pill" href="../en/contact.html">ENG</a>
+          <a class="lang-pill is-current" href="contacto.html">ESP</a>
         </div>
-        <a href="#contacto" class="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-bold bg-primary-container text-on-primary-container rounded-md hover:bg-primary transition-colors uppercase tracking-wider">Solicitar Cotización</a>
-        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-md" aria-label="Abrir menú"><span class="material-symbols-outlined text-2xl">menu</span></button>
+        <a href="contacto.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contacto</a>
+        <a href="contacto.html#contacto" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
+        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menú">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
       </div>
     </div>
   </nav>
-  <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
-  <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col"><div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high"><span class="font-headline font-black text-lg uppercase tracking-tighter">Menú</span><button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-md" aria-label="Cerrar menú"><span class="material-symbols-outlined text-2xl">close</span></button></div><div class="flex-1 overflow-y-auto py-6 px-6"><div class="space-y-1"><a class="block px-4 py-3 font-headline font-bold text-primary bg-primary-container/20 rounded-lg" href="#contacto">Contacto</a></div></div></div>
 
-  <main class="pt-20">
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" aria-label="Cerrar menú"><span class="material-symbols-outlined text-2xl">close</span></button>
+    </div>
+    <div class="flex-1 overflow-y-auto py-6 px-6">
+      <div class="space-y-1">
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="index.html">Inicio</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="productos.html">Productos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="casos.html">Nuestros Proyectos</a>
+        <a class="block px-4 py-3 font-headline font-bold text-primary bg-primary-container/20 rounded-lg" href="contacto.html#nosotros">Sobre IMB</a>
+      </div>
+      <div class="mt-8 space-y-3">
+        <a href="contacto.html" class="flex w-full btn-secondary-light nav-cta">Contacto</a>
+        <a href="contacto.html#contacto" class="flex w-full btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
+      </div>
+    </div>
+  </div>
+
+<main class="pt-20">
     <section class="relative h-[400px] md:h-[500px] flex items-center overflow-hidden bg-inverse-surface">
-      <div class="absolute inset-0 z-0"><img class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWWZdvD6yE4D54_S1TaK6ZGBB4JPmIRMKz3VAZmPnjCCQRlru0vAt3RDLKKpRqQfTO8pbB_WKsm3VIwrn9F6vckdgMCZAwE8gnQSZ5Az8pd99RFx_CCm7vCnMH3jl_apoMa-SCy5G08GtEacLJvWCqmlSH1eXZb8Z4Socrqydqj-DgIM5P_wnuuEFW-0bsqeoVGk0WURL9GvQEuPVnmGptg3qR2qdEyT5C-cr8mM6i2QZcq7fcJcd_7Y2PHxos1MAPiTuOp3UKwGLV" alt="IMB Brasil" /><div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/60 to-transparent"></div></div>
+      <div class="absolute inset-0 z-0"><img class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWWZdvD6yE4D54_S1TaK6ZGBB4JPmIRMKz3VAZmPnjCCQRlru0vAt3RDLKKpRqQfTO8pbB_WKsm3VIwrn9F6vckdgMCZAwE8gnQSZ5Az8pd99RFx_CCm7vCnMH3jl_apoMa-SCy5G08GtEacLJvWCqmlSH1eXZb8Z4Socrqydqj-DgIM5P_wnuuEFW-0bsqeoVGk0WURL9GvQEuPVnmGptg3qR2qdEyT5C-cr8mM6i2QZcq7fcJcd_7Y2PHxos1MAPiTuOp3UKwGLV" alt="IMB Brasil" /><div class="absolute inset-0 bg-inverse-surface/60"></div></div>
       <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full fade-in-up"><div class="max-w-2xl">
         <h1 class="font-headline font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tighter mb-4 md:mb-6 leading-none">CONSTRUYENDO EL <br /><span class="text-primary-container">FUTURO DE LA INFRAESTRUCTURA.</span></h1>
         <p class="text-surface-container-high text-base md:text-lg font-light leading-relaxed">Desde su fundación, IMB Brasil es el pilar de precisión para las mayores constructoras y socio confiable para el emprendedor.</p>
@@ -86,7 +106,7 @@
                 <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Interés</label><select name="interesse" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm"><option value="Pavimentadoras">Pavimentadoras</option><option value="Extrusoras">Extrusoras</option><option value="Repuestos">Repuestos</option><option value="Soporte Técnico">Soporte Técnico</option><option value="Otro">Otro</option></select></div>
               </div>
               <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Mensaje</label><textarea name="mensagem" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm" placeholder="Describe tu necesidad, tipo de obra, plazo..." rows="4"></textarea></div>
-              <button class="w-full forged-gradient text-white font-headline font-bold py-4 md:py-5 rounded shadow-lg text-sm md:text-base uppercase tracking-wider" type="submit">Enviar Solicitud</button>
+              <button class="w-full btn-solid-orange text-white font-headline font-bold py-4 md:py-5 rounded-full shadow-lg text-sm md:text-base uppercase tracking-wider" type="submit">Enviar Solicitud</button>
               <p class="text-xs text-on-surface-variant text-center">Al enviar serás redirigido a WhatsApp con el mensaje precargado.</p>
               <div class="flex justify-center"><span class="wa-hint">Lun–Vie · 8h–18h · Respuesta en ~15min</span></div>
             </form>
@@ -105,7 +125,7 @@
 
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12 px-4 md:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto">
-      <div class="space-y-4"><div class="site-logo-footer"><img src="../images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></div><p class="text-xs text-on-surface-variant leading-relaxed">Líder en tecnología de pavimentación y extrusión de concreto en América Latina.</p></div>
+      <div class="space-y-4"><div class="site-logo-footer"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div><p class="text-xs text-on-surface-variant leading-relaxed">Líder en tecnología de pavimentación y extrusión de concreto en América Latina.</p></div>
       <div class="space-y-4"><h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipos</h5><ul class="text-xs text-on-surface-variant space-y-2"><li><a class="hover:text-primary transition-colors" href="pavimentadora.html">Pavimentadoras</a></li><li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras</a></li><li><a class="hover:text-primary transition-colors" href="productos.html">Catálogo</a></li></ul></div>
       <div class="space-y-4"><h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Empresa</h5><ul class="text-xs text-on-surface-variant space-y-2"><li><a class="hover:text-primary transition-colors" href="#nosotros">Nosotros</a></li><li><a class="hover:text-primary transition-colors" href="casos.html">Casos</a></li><li><a class="hover:text-primary transition-colors" href="#contacto">Contacto</a></li></ul></div>
       <div class="space-y-4"><h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Presencia Internacional</h5><div class="flex flex-wrap gap-2 text-[11px] text-on-surface-variant"><span class="px-2 py-1 bg-surface-container-high rounded">🇧🇷 BR</span><span class="px-2 py-1 bg-surface-container-high rounded">🇦🇷 AR</span><span class="px-2 py-1 bg-surface-container-high rounded">🇨🇱 CL</span><span class="px-2 py-1 bg-surface-container-high rounded">🇵🇾 PY</span><span class="px-2 py-1 bg-surface-container-high rounded">🇺🇾 UY</span><span class="px-2 py-1 bg-surface-container-high rounded">🇵🇪 PE</span><span class="px-2 py-1 bg-surface-container-high rounded">🇨🇴 CO</span></div></div>

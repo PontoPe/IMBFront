@@ -79,29 +79,24 @@
 </head>
 <body class="bg-surface text-on-surface">
 
-  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20">
-      <a href="index.html" class="text-xl font-black text-on-surface tracking-tighter uppercase font-headline">
-        IMB Brasil
-      </a>
-
-      <div class="hidden lg:flex items-center space-x-8 font-headline font-semibold tracking-tight text-sm uppercase">
-        <a class="text-primary border-b-2 border-primary pb-1" href="index.html">Início</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="produtos.html">Produtos</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="contato.html#sobre">Sobre</a>
-        <a class="text-secondary hover:text-primary transition-colors" href="contato.html">Entre em contato</a>
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-4">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
+        <a class="nav-link is-active" href="index.html">Início</a>
+        <a class="nav-link" href="produtos.html">Produtos</a>
+        <a class="nav-link" href="cases.html">Nossos Projetos</a>
+        <a class="nav-link" href="contato.html#sobre">Sobre a IMB</a>
       </div>
-
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 md:gap-3">
         <div class="hidden md:flex items-center gap-1 text-xs font-bold uppercase tracking-widest">
-          <a class="px-2 py-1 rounded bg-surface-container-highest text-on-surface" href="index.html">PT</a>
-          <a class="px-2 py-1 rounded hover:bg-surface-container-high" href="en/index.html">ENG</a>
-          <a class="px-2 py-1 rounded hover:bg-surface-container-high" href="es/index.html">ESP</a>
+          <a class="lang-pill is-current" href="index.html">PT</a>
+          <a class="lang-pill" href="en/index.html">ENG</a>
+          <a class="lang-pill" href="es/index.html">ESP</a>
         </div>
-        <a href="contato.html#contato" class="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-bold bg-surface-container-high rounded-md hover:bg-surface-dim transition-colors uppercase tracking-wider">
-          Orçamento
-        </a>
-        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-md hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
+        <a href="contato.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
+        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
           <span class="material-symbols-outlined text-2xl">menu</span>
         </button>
       </div>
@@ -109,39 +104,29 @@
   </nav>
 
   <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
-
   <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
     <div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high">
-      <span class="font-headline font-black text-lg uppercase tracking-tighter">Menu</span>
-      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-md hover:bg-surface-container-high" aria-label="Fechar menu">
-        <span class="material-symbols-outlined text-2xl">close</span>
-      </button>
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" aria-label="Fechar menu"><span class="material-symbols-outlined text-2xl">close</span></button>
     </div>
     <div class="flex-1 overflow-y-auto py-6 px-6">
       <div class="space-y-1">
         <a class="block px-4 py-3 font-headline font-bold text-primary bg-primary-container/20 rounded-lg" href="index.html">Início</a>
         <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="produtos.html">Produtos</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="pavimentadora.html">— Pavimentadoras</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="extrusora.html">— Extrusoras</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="comparar.html">Comparar Equipamentos</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contato.html#sobre">Sobre Nós</a>
-        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contato.html">Entre em contato</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="cases.html">Nossos Projetos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contato.html#sobre">Sobre a IMB</a>
       </div>
       <div class="mt-8 space-y-3">
-        <a href="contato.html#contato" class="block w-full text-center px-6 py-3 bg-surface-container-high font-bold text-sm uppercase tracking-wider rounded-md hover:bg-surface-dim transition-colors">
-          Solicitar Orçamento
-        </a>
-        <a href="#" class="wa-link block w-full text-center px-6 py-3 wa-gradient text-white font-bold text-sm uppercase tracking-wider rounded-md" target="_blank" rel="noopener">
-          WhatsApp
-        </a>
+        <a href="contato.html" class="flex w-full btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="flex w-full btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
       </div>
     </div>
   </div>
 
-  <header class="relative min-h-screen flex items-center justify-center md:justify-start overflow-hidden pt-20">
+<header class="relative min-h-screen flex items-center justify-center md:justify-start overflow-hidden pt-20">
     <div class="absolute inset-0 z-0">
       <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaIx-L4aTxls6YD5ugOLtTB7ys3NSLi8VK4oRcP8RZajqN5bHV0I5capcK6OzdXx21gU2QSI_aiS0VF5QFg4S_WrotbDH_I-OpkLzbakclqKisHW0t2q8T-WXlDwt1znHcfWn5iCK_yAMiZK1Et2Pkle9hriCfD3tJ78dA4kQqslvAUSUMC33pigvxJ3IR9vBECUZTPFRp6rUyYNU_ww6c8c7Aw5Adt6HvzAGBBgt5ZUCxZZTE7fiXTigkr-nSZkefoNfezzPQQQlF" alt="Pavimentadora de concreto IMB operando em rodovia ao pôr do sol" />
-      <div class="absolute inset-0 bg-gradient-to-r from-on-background/80 via-on-background/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-on-background/60"></div>
     </div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
@@ -237,6 +222,24 @@
               Combinamos décadas de experiência em engenharia brasileira com tecnologia global para entregar o melhor ROI do mercado.
             </p>
           </div>
+          <div class="home-kpi-grid">
+            <div class="home-kpi-card">
+              <div class="home-kpi-value">+30</div>
+              <div class="home-kpi-label">anos de mercado</div>
+            </div>
+            <div class="home-kpi-card">
+              <div class="home-kpi-value">16.000m²</div>
+              <div class="home-kpi-label">de fábrica</div>
+            </div>
+            <div class="home-kpi-card">
+              <div class="home-kpi-value">+10</div>
+              <div class="home-kpi-label">países atendidos</div>
+            </div>
+            <div class="home-kpi-card">
+              <div class="home-kpi-value">3</div>
+              <div class="home-kpi-label">gerações de clientes</div>
+            </div>
+          </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md">
               <span class="material-symbols-outlined text-primary text-3xl">verified</span>
@@ -264,6 +267,25 @@
     </div>
   </section>
 
+  <section id="cases-destaque" class="py-16 md:py-24 bg-surface px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-10 md:mb-14 fade-in-up">
+        <div class="flex items-center gap-4 mb-4">
+          <span class="h-1 w-12 bg-primary"></span>
+          <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Cases em Destaque</span>
+        </div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-2xl">Obras reais, números verificáveis e equipamentos em campo.</h2>
+          <a href="cases.html" class="inline-flex items-center gap-2 w-fit bg-primary-container text-on-primary-container px-6 py-3 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-primary transition-colors">
+            Ver todos os cases
+            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+          </a>
+        </div>
+      </div>
+      <div id="cases-grid" class="case-list-grid" data-featured="home" data-limit="3"></div>
+    </div>
+  </section>
+
   <!-- TODO(clients-marquee): logos rotativos. Lista populada por js/main.js via #clients-track.
        Para editar a lista, mexer no array CLIENTS em site/js/main.js (~linha 244). -->
   <section id="clientes" class="py-16 md:py-24 bg-surface-container-low overflow-hidden">
@@ -281,6 +303,37 @@
     </div>
     <div class="marquee fade-in-up" aria-label="Carrossel de clientes IMB Brasil">
       <div class="marquee-track" id="clients-track"><!-- populado por js/main.js --></div>
+    </div>
+  </section>
+
+  <section id="presenca-global" class="py-16 md:py-24 bg-surface px-4 md:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 items-center">
+      <div class="space-y-6 fade-in-up">
+        <div class="flex items-center gap-4">
+          <span class="h-1 w-12 bg-primary"></span>
+          <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Presença Global</span>
+        </div>
+        <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight leading-tight">Atuação técnica em mercados estratégicos no Brasil e no exterior.</h2>
+        <p class="text-on-surface-variant text-base md:text-lg leading-relaxed">A IMB apoia obras em diferentes continentes com equipamentos, peças e suporte técnico para operação contínua.</p>
+        <a href="contato.html#contato" class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-6 py-3 rounded-md font-bold text-sm uppercase tracking-widest hover:bg-primary transition-colors">
+          Fale com um especialista
+          <span class="material-symbols-outlined text-sm">arrow_outward</span>
+        </a>
+      </div>
+      <div class="global-presence-panel fade-in-up">
+        <table class="global-country-table" aria-label="Países atendidos pela IMB Brasil por continente">
+          <thead>
+            <tr><th>Continente</th><th>Países</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>América do Sul</td><td>Brasil (Sede), Argentina, Bolívia, Chile, Colômbia, Equador, Guiana, Paraguai, Peru, Uruguai.</td></tr>
+            <tr><td>América do Norte e Central</td><td>Canadá, Estados Unidos, México, Costa Rica, El Salvador, Honduras, República Dominicana.</td></tr>
+            <tr><td>Europa</td><td>França, Geórgia, Grécia, Irlanda, Itália, Polônia, Portugal, Reino Unido, Romênia, Suécia, Ucrânia.</td></tr>
+            <tr><td>África</td><td>África do Sul, Angola, Costa do Marfim, Gana, Guiné-Bissau, Moçambique.</td></tr>
+            <tr><td>Ásia</td><td>Arábia Saudita, Coreia do Sul, Filipinas, Israel, Uzbequistão.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -305,7 +358,7 @@
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12 px-4 md:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto">
       <div class="space-y-4">
-        <div class="site-logo-footer"><img src="images/LOGO_IMB.svg" alt="IMB Brasil" class="site-logo-img" /></div>
+        <div class="site-logo-footer"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
         <p class="text-xs text-on-surface-variant leading-relaxed">
           Líder em tecnologia de pavimentação e extrusão de concreto, servindo os maiores projetos de infraestrutura da América Latina.
         </p>
@@ -352,6 +405,7 @@
   </a>
 
   <script src="js/i18n.js"></script>
+  <script src="js/cases.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

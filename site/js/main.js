@@ -202,8 +202,15 @@ window.IMB_resolveWaMsg = function (el) {
   if (window.IMB_CASES) {
     var grid = document.getElementById('cases-grid');
     if (grid) {
-      grid.innerHTML = window.IMB_CASES.cases.map(function (c) {
-        return renderCaseCard(c, !!c.featured);
+      var caseItems = window.IMB_CASES.cases.slice();
+      var caseLimit = parseInt(grid.getAttribute('data-limit') || '', 10);
+      if (grid.getAttribute('data-featured') === 'home') {
+        caseItems = caseItems.filter(function (c) { return !!c.featured; })
+          .concat(caseItems.filter(function (c) { return !c.featured; }));
+      }
+      if (!isNaN(caseLimit) && caseLimit > 0) caseItems = caseItems.slice(0, caseLimit);
+      grid.innerHTML = caseItems.map(function (c) {
+        return renderCaseCard(c);
       }).join('');
       // Reaplicar IntersectionObserver nos novos .fade-in-up
       grid.querySelectorAll('.fade-in-up').forEach(function (el) {
