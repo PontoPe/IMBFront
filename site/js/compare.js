@@ -61,6 +61,8 @@
   if (!pickerEl || !comparisonEl) return;
 
   let selected = readSelectionFromURL();
+  let comparisonResizeObserver = null;
+  let comparisonResizeHandler = null;
 
   function readSelectionFromURL() {
     const raw = new URLSearchParams(window.location.search).get('ids') || '';
@@ -82,6 +84,61 @@
     else selected.add(id);
     writeSelectionToURL();
     render();
+  }
+
+  function cleanupComparisonScrollSync() {
+    if (comparisonResizeObserver) {
+      comparisonResizeObserver.disconnect();
+      comparisonResizeObserver = null;
+    }
+    if (comparisonResizeHandler) {
+      window.removeEventListener('resize', comparisonResizeHandler);
+      comparisonResizeHandler = null;
+    }
+  }
+
+  function setupComparisonScrollSync() {
+    cleanupComparisonScrollSync();
+
+    const topScroll = comparisonEl.querySelector('.cmp-top-scroll');
+    const topTrack = comparisonEl.querySelector('.cmp-top-scroll-track');
+    const mainScroll = comparisonEl.querySelector('.cmp-scroll');
+    const grid = comparisonEl.querySelector('.cmp-grid');
+    if (!topScroll || !topTrack || !mainScroll || !grid) return;
+
+    let syncing = false;
+    function syncTo(source, target) {
+      if (syncing) return;
+      syncing = true;
+      target.scrollLeft = source.scrollLeft;
+      requestAnimationFrame(function () { syncing = false; });
+    }
+
+    function syncWidth() {
+      topTrack.style.width = grid.scrollWidth + 'px';
+      const hasOverflow = mainScroll.scrollWidth > mainScroll.clientWidth + 1;
+      topScroll.hidden = !hasOverflow;
+      if (hasOverflow) {
+        topScroll.scrollLeft = mainScroll.scrollLeft;
+      } else {
+        topScroll.scrollLeft = 0;
+        mainScroll.scrollLeft = 0;
+      }
+    }
+
+    topScroll.addEventListener('scroll', function () { syncTo(topScroll, mainScroll); });
+    mainScroll.addEventListener('scroll', function () { syncTo(mainScroll, topScroll); });
+
+    if ('ResizeObserver' in window) {
+      comparisonResizeObserver = new ResizeObserver(syncWidth);
+      comparisonResizeObserver.observe(mainScroll);
+      comparisonResizeObserver.observe(grid);
+    } else {
+      comparisonResizeHandler = syncWidth;
+      window.addEventListener('resize', comparisonResizeHandler);
+    }
+
+    requestAnimationFrame(syncWidth);
   }
 
   function fmtNumber(n) {
@@ -169,6 +226,7 @@
     const picks = Array.from(selected).map((id) => productMap[id]).filter(Boolean);
 
     if (picks.length < 2) {
+      cleanupComparisonScrollSync();
       comparisonEl.innerHTML = '';
       emptyEl.classList.toggle('hidden', picks.length === 0);
       if (picks.length === 1) {
@@ -219,8 +277,11 @@
     }).join('');
 
     let html = `
-      <div class="cmp-table-wrap rounded-xl border border-surface-container-high bg-surface-container-lowest overflow-hidden">
-        <div class="cmp-scroll overflow-x-auto">
+      <div class="cmp-top-scroll" hidden aria-hidden="true">
+        <div class="cmp-top-scroll-track"></div>
+      </div>
+      <div class="cmp-table-wrap rounded-xl border border-surface-container-high bg-surface-container-lowest">
+        <div class="cmp-scroll overflow-x-auto" tabindex="0" aria-label="${ui('compare')}">
           <div class="cmp-grid" style="grid-template-columns:${gridTemplate};">
             <div class="cmp-head-cell cmp-head-label flex items-end">
               <div>
@@ -267,6 +328,7 @@
     `;
 
     comparisonEl.innerHTML = html;
+    setupComparisonScrollSync();
 
     comparisonEl.querySelectorAll('.cmp-remove').forEach((btn) => {
       btn.addEventListener('click', (e) => {
