@@ -1709,7 +1709,7 @@ footer .material-symbols-outlined.text-primary {
 }
 
 /* ========== Language switcher (emoji flags + dropdown) ==========
-   Uses emoji stripe glyphs instead of regional flag glyphs for better browser support.
+   Uses regional flag emoji in the trigger and dropdown items.
    main.js handles open/close + outside-click.
    Markup contract:
       <div class="lang-switcher">
@@ -1749,13 +1749,11 @@ footer .material-symbols-outlined.text-primary {
 .lang-switcher-btn .lang-flag {
   display: inline-flex;
   font-size: 1.05rem;
-  letter-spacing: -0.12em;
   line-height: 1;
 }
 .lang-switcher-menu a .lang-flag {
   display: inline-flex;
   font-size: 1rem;
-  letter-spacing: -0.12em;
   margin-right: 0;
 }
 .lang-switcher-menu {
