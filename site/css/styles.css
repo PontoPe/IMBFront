@@ -322,7 +322,7 @@ h1, h2, h3, h4 {
   --imb-radius-control: 8px;
   --imb-shadow-1: 0 8px 24px rgba(31, 35, 34, 0.08);
   --imb-shadow-2: 0 12px 40px rgba(31, 35, 34, 0.12);
-  --imb-container: 1110px;
+  --imb-container: 1440px;
 }
 
 html {
@@ -1074,3 +1074,85 @@ footer .material-symbols-outlined.text-primary {
 .site-logo-footer .site-logo-img {
   height: 56px;
 }
+
+/* ========== Language switcher (globe + dropdown) ==========
+   Replaces the old PT/ENG/ESP pills. main.js handles open/close + outside-click.
+   Markup contract:
+     <div class="lang-switcher">
+       <button class="lang-switcher-btn" aria-expanded="false">…globe…</button>
+       <ul class="lang-switcher-menu" data-open="false">
+         <li><a href="<pt-url>" data-lang="pt">Português</a></li>
+         <li><a href="<en-url>" data-lang="en">English</a></li>
+         <li><a href="<es-url>" data-lang="es">Español</a></li>
+       </ul>
+     </div>
+   The <html lang> attribute drives which item gets the `is-current` style. */
+.lang-switcher {
+  position: relative;
+}
+.lang-switcher-btn {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--imb-neutral-300);
+  border-radius: 9999px;
+  color: var(--imb-black);
+  cursor: pointer;
+  display: inline-flex;
+  height: 40px;
+  justify-content: center;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+  width: 40px;
+}
+.lang-switcher-btn:hover {
+  background: var(--imb-neutral-200);
+  border-color: var(--imb-neutral-400);
+}
+.lang-switcher-btn .material-symbols-outlined {
+  font-size: 22px;
+}
+.lang-switcher-menu {
+  background: #ffffff;
+  border: 1px solid var(--imb-neutral-300);
+  border-radius: 12px;
+  box-shadow: var(--imb-shadow-2);
+  display: none;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  min-width: 180px;
+  padding: 0.4rem;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 60;
+}
+.lang-switcher-menu[data-open="true"] {
+  display: block;
+}
+.lang-switcher-menu li { margin: 0; }
+.lang-switcher-menu a {
+  align-items: center;
+  border-radius: 8px;
+  color: var(--imb-black);
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 0.75rem;
+  text-decoration: none;
+}
+.lang-switcher-menu a:hover { background: var(--imb-neutral-100); }
+.lang-switcher-menu a.is-current {
+  background: var(--imb-neutral-200);
+  color: var(--imb-orange);
+}
+.lang-switcher-menu a .lang-code {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-left: auto;
+  text-transform: uppercase;
+  color: var(--imb-neutral-600);
+}
+.lang-switcher-menu a.is-current .lang-code { color: var(--imb-orange); }

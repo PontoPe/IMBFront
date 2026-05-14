@@ -64,6 +64,35 @@ window.IMB_resolveWaMsg = function (el) {
     });
   }
 
+  // ---- Language switcher (globe + dropdown) ----
+  // Marks current locale from <html lang> and wires open/close + outside-click.
+  document.querySelectorAll('.lang-switcher').forEach(function (root) {
+    var btn  = root.querySelector('.lang-switcher-btn');
+    var menu = root.querySelector('.lang-switcher-menu');
+    if (!btn || !menu) return;
+
+    var pageLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+    var lang = pageLang.indexOf('en') === 0 ? 'en' : (pageLang.indexOf('es') === 0 ? 'es' : 'pt');
+    menu.querySelectorAll('a[data-lang]').forEach(function (a) {
+      if (a.getAttribute('data-lang') === lang) a.classList.add('is-current');
+    });
+
+    function setOpen(open) {
+      menu.setAttribute('data-open', open ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(menu.getAttribute('data-open') !== 'true');
+    });
+    document.addEventListener('click', function (e) {
+      if (!root.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  });
+
   const nav = document.getElementById('main-nav');
   if (nav) {
     window.addEventListener('scroll', function () {

@@ -27,10 +27,15 @@
         <a class="nav-link is-active" href="contacto.html#nosotros">Sobre IMB</a>
       </div>
       <div class="flex items-center gap-2 md:gap-3">
-        <div class="hidden md:flex items-center gap-1 text-xs font-bold uppercase tracking-widest">
-          <a class="lang-pill" href="../contato.html">PT</a>
-          <a class="lang-pill" href="../en/contact.html">ENG</a>
-          <a class="lang-pill is-current" href="contacto.html">ESP</a>
+        <div class="lang-switcher hidden md:flex items-center">
+          <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma">
+            <span class="material-symbols-outlined">language</span>
+          </button>
+          <ul class="lang-switcher-menu" role="menu" data-open="false">
+            <li role="none"><a role="menuitem" data-lang="pt" href="../contato.html">Português <span class="lang-code">PT</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="en" href="../en/contact.html">English <span class="lang-code">EN</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="es" href="contacto.html">Español <span class="lang-code">ES</span></a></li>
+          </ul>
         </div>
         <a href="contacto.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contacto</a>
         <a href="contacto.html#contacto" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
