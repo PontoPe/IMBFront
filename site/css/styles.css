@@ -158,6 +158,17 @@
   width: 100%;
 }
 
+.catalog-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.25L8 10.25L12 6.25' stroke='%236c757d' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding-right: 2.75rem;
+}
+
 .catalog-filter-row {
   display: flex;
   flex-wrap: wrap;
@@ -928,6 +939,39 @@ textarea:disabled,
 .cmp-head-cell,
 .cmp-row-label {
   border-color: var(--imb-neutral-300) !important;
+}
+
+#select-all-btn,
+#clear-btn {
+  border: 1px solid transparent;
+  color: var(--imb-body) !important;
+}
+
+#select-all-btn {
+  background: var(--imb-orange) !important;
+  border-color: var(--imb-orange) !important;
+  color: var(--imb-white) !important;
+}
+
+#select-all-btn:hover {
+  background: var(--imb-red) !important;
+  border-color: var(--imb-red) !important;
+}
+
+#clear-btn {
+  background: var(--imb-neutral-200) !important;
+  border-color: var(--imb-neutral-300) !important;
+}
+
+#clear-btn:hover {
+  background: var(--imb-neutral-300) !important;
+  border-color: var(--imb-neutral-400) !important;
+}
+
+#select-all-btn:focus-visible,
+#clear-btn:focus-visible {
+  outline: 3px solid rgba(var(--imb-orange-rgb), 0.16);
+  outline-offset: 2px;
 }
 
 /* Compare bool icons: plain check (green) / x (grey), no bubble. */

@@ -186,7 +186,7 @@
     if (!hasAny) return '';
     var rows = inGroup.map(renderField).join('');
     return ''
-      + '<div class="bg-surface-container-lowest rounded-xl p-6 md:p-8 fade-in-up">'
+      + '<div class="bg-surface-container-lowest rounded-xl p-6 md:p-8 fade-in-up break-inside-avoid mb-6 md:mb-8">'
       +   '<h3 class="font-headline font-extrabold text-lg md:text-xl uppercase tracking-tight text-on-surface mb-6 border-l-4 border-primary-container pl-4">' + escHtml(T(g.label)) + '</h3>'
       +   '<div class="space-y-3">' + rows + '</div>'
       + '</div>';
@@ -198,7 +198,7 @@
     +     '<div class="mb-12 md:mb-16 fade-in-up">'
     +       '<h2 class="text-2xl md:text-3xl font-black font-headline tracking-tight uppercase border-l-8 border-primary-container pl-6">' + escHtml(ui('techSpecs')) + '</h2>'
     +     '</div>'
-    +     '<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">' + specBlocks + '</div>'
+    +     '<div class="columns-1 md:columns-2 gap-6 md:gap-8">' + specBlocks + '</div>'
     +   '</div>'
     + '</section>';
 
