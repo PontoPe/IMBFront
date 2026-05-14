@@ -18,7 +18,7 @@
 </head>
 <body class="bg-surface text-on-surface">
     <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-    <div class="flex items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-16">
+    <div class="flex items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-12">
       <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
       <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
         <a class="nav-link is-active" href="index.html">Inicio</a>
@@ -28,13 +28,11 @@
       </div>
       <div class="flex items-center gap-2 md:gap-3 ml-auto">
         <div class="lang-switcher hidden md:flex items-center">
-          <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma">
-            <span class="material-symbols-outlined">translate</span>
-          </button>
+          <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma"><span class="lang-flag" aria-hidden="true">🇪🇸</span><span class="lang-current-code">ES</span></button>
           <ul class="lang-switcher-menu" role="menu" data-open="false">
-            <li role="none"><a role="menuitem" data-lang="pt" href="../index.html">Português <span class="lang-code">PT</span></a></li>
-            <li role="none"><a role="menuitem" data-lang="en" href="../en/index.html">English <span class="lang-code">EN</span></a></li>
-            <li role="none"><a role="menuitem" data-lang="es" href="index.html">Español <span class="lang-code">ES</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="pt" href="../index.html"><span class="lang-flag">🇧🇷</span>Português <span class="lang-code">PT</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="en" href="../en/index.html"><span class="lang-flag">🇬🇧</span>English <span class="lang-code">EN</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="es" href="index.html"><span class="lang-flag">🇪🇸</span>Español <span class="lang-code">ES</span></a></li>
           </ul>
         </div>
         <a href="contacto.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contacto</a>
