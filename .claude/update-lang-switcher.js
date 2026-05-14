@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const flags = { pt: '\u{1F1E7}\u{1F1F7}', en: '\u{1F1EC}\u{1F1E7}', es: '\u{1F1EA}\u{1F1F8}' };
+const flags = { pt: '\u{1F1E7}\u{1F1F7}', en: '\u{1F1FA}\u{1F1F8}', es: '\u{1F1EA}\u{1F1F8}' };
 const codes = { pt: 'PT', en: 'ENG', es: 'ES' };
 const arias = { pt: 'Idioma', en: 'Language', es: 'Idioma' };
 
