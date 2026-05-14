@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 806.51 493.01">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #2c277e;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: #ffc936;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-6 {
+        fill: #009547;
+      }
+    </style>
+    <clipPath id="clippath">
+      <circle class="cls-1" cx="403.25" cy="246.5" r="141.78"/>
+    </clipPath>
+  </defs>
+  <rect class="cls-6" width="806.51" height="493.01"/>
+  <polygon class="cls-4" points="399.99 469.2 37.25 247.95 402.75 23.81 769.25 245.06 399.99 469.2"/>
+  <circle class="cls-2" cx="403.25" cy="246.5" r="141.78"/>
+  <g class="cls-5">
+    <path class="cls-3" d="M551.24,314.13c-30.68-27.3-87.98-63.4-186.69-80.32-60.59-10.38-108.23-8.45-108.7-8.43l-2.43-53.95c2.13-.1,52.91-2.24,118.96,8.94,38.99,6.6,75.34,16.51,108.05,29.47,41.65,16.49,77.55,38.01,106.71,63.96l-35.9,40.34Z"/>
+  </g>
+</svg>

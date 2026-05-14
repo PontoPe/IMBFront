@@ -291,6 +291,13 @@ h1, h2, h3, h4 {
 .marquee {
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  isolation: isolate;
+  /* Vertical padding gives cards room to lift on hover without being clipped. */
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -4px;
+  margin-bottom: -4px;
   /* Edge fade mask removed for the solid-color treatment. */
 }
 .marquee-track {
@@ -312,6 +319,8 @@ h1, h2, h3, h4 {
   height: 96px;
   min-width: 220px;
   margin-right: 1.75rem;
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,7 +340,7 @@ h1, h2, h3, h4 {
   opacity: 0.65;
   transition: filter 0.3s, opacity 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
 }
-.client-logo:hover { filter: grayscale(0); opacity: 1; color: #ea7805; border-color: #ea7805; transform: translateY(-2px); }
+.client-logo:hover { filter: grayscale(0); opacity: 1; color: #ea7805; border-color: #ea7805; transform: translateY(-2px); z-index: 3; }
 
 /* ========== Compare page ========== */
 .compare-picker-grid {
@@ -1767,15 +1776,15 @@ footer .material-symbols-outlined.text-primary {
   background: var(--imb-neutral-200);
   border-color: var(--imb-neutral-400);
 }
-.lang-switcher-btn .lang-flag {
-  display: inline-flex;
-  font-size: 1.05rem;
-  line-height: 1;
-}
+.lang-switcher-btn .lang-flag,
 .lang-switcher-menu a .lang-flag {
-  display: inline-flex;
-  font-size: 1rem;
-  margin-right: 0;
+  display: inline-block;
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 .lang-switcher-menu {
   background: #ffffff;
