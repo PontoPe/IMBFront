@@ -111,7 +111,7 @@
       </div>
     </section>
 
-    <section id="sobre" class="pt-10 pb-14 md:pt-14 md:pb-20 bg-surface relative scroll-mt-20">
+    <section id="sobre" class="pt-10 pb-8 md:pt-14 md:pb-10 bg-surface relative scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div class="lg:col-span-7 fade-in-up">
@@ -145,11 +145,11 @@
             </div>
           </div>
 
-          <div class="lg:col-span-5 relative fade-in-up">
-            <div class="aspect-[3/4] rounded-lg overflow-hidden shadow-2xl">
+          <div class="lg:col-span-5 relative fade-in-up flex justify-end">
+            <div class="w-full max-w-sm xl:max-w-md aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
               <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgaMjhPhQ9MRcsWyz-vg5tlz1IEcVrOOcG4zrSf2RkGzdeg7DF9TqFHjunIkjCqLq1Gj_1WEVLXmW8Fs_6PphTmm2VGXQS9ByD3Cpxh3r19q2EW4gWHOFWMDDiWBW-742p-SDguwMUJwrkv8edk1t_wpbxUC15ng7CfsSMhZOeRunwhIsEupvJlUTF5TDUEcVLrd_3M4bb4g7mDuN8ipn7q5xrQUWJiDO31eqKv8Dm51qZG0ng9W2nZaM00hAzqCrGhj7TzgBYrpo" alt="Engenheira na fábrica IMB Brasil" />
             </div>
-            <div class="absolute -bottom-8 -left-4 md:-bottom-10 md:-left-10 bg-on-background border border-white/10 p-6 md:p-8 rounded-lg shadow-xl hidden md:block max-w-xs">
+            <div class="absolute -bottom-6 left-0 bg-on-background border border-white/10 p-6 md:p-7 rounded-lg shadow-xl hidden md:block max-w-xs">
               <p class="font-headline font-bold text-white text-base md:text-lg leading-tight italic">
                 "Nossa meta não é vender volume, é garantir que cada cliente tenha uma máquina operando sem paradas."
               </p>
@@ -324,6 +324,40 @@
       </div>
     </section>
 
+    <section id="clientes" class="py-16 md:py-24 bg-surface-container-low scroll-mt-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="mb-10 md:mb-14 fade-in-up">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="h-1 w-12 bg-primary"></span>
+            <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Quem confia</span>
+          </div>
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-xl">Clientes que constroem o Brasil ao nosso lado.</h2>
+            <p class="text-on-surface-variant text-sm md:text-base max-w-md leading-relaxed">Construtoras, concessionárias e órgãos públicos que escolheram a precisão IMB.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee fade-in-up" aria-label="Carrossel de clientes IMB Brasil">
+        <div class="marquee-track" id="clients-track">
+          <!-- preenchido via JS para duplicar a lista e manter o loop perfeito -->
+        </div>
+      </div>
+    </section>
+
+    <section id="depoimentos" class="py-16 md:py-24 bg-surface scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="mb-10 md:mb-14 fade-in-up">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="h-1 w-12 bg-primary"></span>
+            <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Quem fala por nós</span>
+          </div>
+          <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-2xl leading-tight">Depoimentos de quem opera em campo.</h2>
+        </div>
+        <div id="cases-testimonials" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 fade-in-up"></div>
+      </div>
+    </section>
+
     <section id="contato" class="py-16 md:py-24 bg-surface-container-low scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -427,39 +461,6 @@
       </div>
     </section>
 
-    <section id="clientes" class="py-16 md:py-24 bg-surface-container-low scroll-mt-20 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="mb-10 md:mb-14 fade-in-up">
-          <div class="flex items-center gap-4 mb-4">
-            <span class="h-1 w-12 bg-primary"></span>
-            <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Quem confia</span>
-          </div>
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-xl">Clientes que constroem o Brasil ao nosso lado.</h2>
-            <p class="text-on-surface-variant text-sm md:text-base max-w-md leading-relaxed">Construtoras, concessionárias e órgãos públicos que escolheram a precisão IMB.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="marquee fade-in-up" aria-label="Carrossel de clientes IMB Brasil">
-        <div class="marquee-track" id="clients-track">
-          <!-- preenchido via JS para duplicar a lista e manter o loop perfeito -->
-        </div>
-      </div>
-    </section>
-
-    <section id="depoimentos" class="py-16 md:py-24 bg-surface scroll-mt-20">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="mb-10 md:mb-14 fade-in-up">
-          <div class="flex items-center gap-4 mb-4">
-            <span class="h-1 w-12 bg-primary"></span>
-            <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Quem fala por nós</span>
-          </div>
-          <h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight max-w-2xl leading-tight">Depoimentos de quem opera em campo.</h2>
-        </div>
-        <div id="cases-testimonials" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 fade-in-up"></div>
-      </div>
-    </section>
   </main>
 
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
@@ -483,9 +484,9 @@
           <li><a class="hover:text-primary transition-colors" href="#historia">Nossa História</a></li>
           <li><a class="hover:text-primary transition-colors" href="#presenca">Onde Atuamos</a></li>
           <li><a class="hover:text-primary transition-colors" href="#obras">Obras de Destaque</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#contato">Contato</a></li>
           <li><a class="hover:text-primary transition-colors" href="#clientes">Clientes</a></li>
           <li><a class="hover:text-primary transition-colors" href="#depoimentos">Depoimentos</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#contato">Contato</a></li>
         </ul>
       </div>
       <div class="space-y-4">

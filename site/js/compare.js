@@ -90,22 +90,28 @@
     return n.toLocaleString(locale(), { maximumFractionDigits: 2 });
   }
 
+  function subtitleParts(product) {
+    const subtitle = T(product.subtitle);
+    const parts = subtitle.split(/\s+[—-]\s+/).map((part) => part.trim()).filter(Boolean);
+    return parts.length ? parts : [subtitle];
+  }
+
   function renderPicker() {
     pickerEl.innerHTML = products.map((p) => {
       const isOn = selected.has(p.id);
-      const ringClass = isOn ? 'ring-2 ring-primary border-primary' : 'border-surface-container-high hover:border-outline-variant';
       const toggleStateClass = isOn ? 'is-selected' : 'is-add';
+      const subtitle = subtitleParts(p).slice(0, 2).map((part) => `<span>${escapeHTML(part)}</span>`).join('');
       return `
         <button type="button" data-id="${p.id}" aria-pressed="${isOn}"
-          class="picker-card text-left bg-surface-container-lowest rounded-xl border-2 ${ringClass} overflow-hidden transition-all group">
-          <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
-            <img src="${p.image}" alt="${escapeAttr(p.name)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-            <span class="picker-toggle ${toggleStateClass}" aria-hidden="true"></span>
+          class="picker-card group">
+          <div class="picker-thumb">
+            <img src="${p.image}" alt="${escapeAttr(p.name)}" loading="lazy" />
           </div>
-          <div class="p-3">
-            <div class="font-headline font-black text-sm md:text-base uppercase tracking-tight text-on-surface leading-tight">${escapeHTML(p.name)}</div>
-            <div class="text-[10px] md:text-xs text-on-surface-variant mt-1 leading-snug">${escapeHTML(T(p.subtitle))}</div>
+          <div class="picker-copy">
+            <div class="picker-title">${escapeHTML(p.name)}</div>
+            <div class="picker-subtitle">${subtitle}</div>
           </div>
+          <span class="picker-toggle ${toggleStateClass}" aria-hidden="true"></span>
         </button>`;
     }).join('');
 

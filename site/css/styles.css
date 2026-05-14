@@ -17,6 +17,13 @@
   transform: none;
 }
 
+.home-hero-eyebrow {
+  background: var(--imb-white);
+  border-radius: 9999px;
+  box-shadow: 0 10px 24px rgba(31, 35, 34, 0.16);
+  color: var(--imb-orange);
+}
+
 /* Single-color button utilities. */
 .btn-solid-orange {
   background: var(--imb-orange);
@@ -115,6 +122,96 @@
   .wa-hint::before { animation: none; }
 }
 
+.catalog-control-panel {
+  background: var(--imb-white);
+  border: 1px solid var(--imb-neutral-300);
+  border-radius: var(--imb-radius-card);
+  box-shadow: var(--imb-shadow-1);
+  padding: 1.25rem;
+}
+
+.catalog-control-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.catalog-control-label {
+  color: var(--imb-neutral-600);
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.catalog-search,
+.catalog-select {
+  background: var(--imb-neutral-100);
+  border: 1px solid var(--imb-neutral-300);
+  border-radius: 9999px !important;
+  color: var(--imb-black);
+  font-size: 0.88rem;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  width: 100%;
+}
+
+.catalog-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.catalog-filter-button {
+  align-items: center;
+  background: var(--imb-neutral-100);
+  border: 1px solid var(--imb-neutral-300);
+  border-radius: 9999px;
+  color: var(--imb-neutral-700);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  min-height: 34px;
+  padding: 0.55rem 0.85rem;
+  text-transform: uppercase;
+}
+
+.catalog-filter-button.is-active {
+  background: var(--imb-orange) !important;
+  border-color: var(--imb-orange) !important;
+  color: var(--imb-white) !important;
+}
+
+.catalog-filter-button:focus-visible {
+  outline: 3px solid rgba(var(--imb-orange-rgb), 0.24);
+  outline-offset: 2px;
+}
+
+.catalog-result-summary {
+  align-items: center;
+  color: var(--imb-neutral-600);
+  display: flex;
+  font-size: 0.86rem;
+  justify-content: space-between;
+  line-height: 1.4;
+}
+
+.catalog-empty {
+  background: var(--imb-white);
+  border: 1px dashed var(--imb-neutral-400);
+  border-radius: var(--imb-radius-card);
+  color: var(--imb-neutral-600);
+  padding: 2rem;
+  text-align: center;
+}
+
 .ghost-border {
   outline: 1px solid rgba(209, 197, 171, 0.2);
 }
@@ -211,9 +308,9 @@ h1, h2, h3, h4 {
   border: 1px solid #e9ecef;
   border-radius: 20px;
   padding: 1.25rem 1.75rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-transform: uppercase;
   font-size: 1.05rem;
   color: #6c757d;
@@ -226,6 +323,90 @@ h1, h2, h3, h4 {
 .client-logo:hover { filter: grayscale(0); opacity: 1; color: #ea7805; border-color: #ea7805; transform: translateY(-2px); }
 
 /* ========== Compare page ========== */
+.compare-picker-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
+}
+
+/* ToDo(compare-picker-card): se a foto oficial de cada produto mudar, revisar object-position nos thumbnails. */
+.picker-card {
+  align-items: center;
+  background: var(--imb-white);
+  border: 1px solid var(--imb-neutral-300) !important;
+  border-radius: var(--imb-radius-card);
+  box-shadow: 0 3px 10px rgba(31, 35, 34, 0.12);
+  column-gap: 0.75rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  min-height: 104px;
+  padding: 0.5rem 2.75rem 0.5rem 0.5rem;
+  position: relative;
+  text-align: left;
+  transition: border-color var(--imb-transition), box-shadow var(--imb-transition), transform var(--imb-transition);
+}
+
+.picker-card:hover {
+  border-color: var(--imb-neutral-400) !important;
+  box-shadow: var(--imb-shadow-1);
+  transform: translateY(-1px);
+}
+
+.picker-card[aria-pressed="true"] {
+  border-color: var(--imb-orange) !important;
+  box-shadow: 0 0 0 2px rgba(var(--imb-orange-rgb), 0.18), var(--imb-shadow-1);
+}
+
+.picker-thumb {
+  align-self: stretch;
+  background: var(--imb-neutral-200);
+  border-radius: 14px;
+  min-height: 88px;
+  overflow: hidden;
+}
+
+.picker-thumb img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--imb-transition);
+  width: 100%;
+}
+
+.picker-card:hover .picker-thumb img {
+  transform: scale(1.04);
+}
+
+.picker-copy {
+  min-width: 0;
+}
+
+.picker-title {
+  color: var(--imb-black);
+  display: -webkit-box;
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--imb-type-subtitle-2);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.15;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.picker-subtitle {
+  color: var(--imb-neutral-600);
+  display: grid;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--imb-type-body-2);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-top: 0.25rem;
+  row-gap: 0.1rem;
+}
+
 .cmp-grid {
   display: grid;
   min-width: 720px;
@@ -336,6 +517,13 @@ h1, h2, h3, h4 {
   --imb-shadow-1: 0 8px 24px rgba(31, 35, 34, 0.08);
   --imb-shadow-2: 0 12px 40px rgba(31, 35, 34, 0.12);
   --imb-container: 1440px;
+  --imb-type-h1: 60px;
+  --imb-type-h2: 48px;
+  --imb-type-h3: 40px;
+  --imb-type-subtitle-1: 28px;
+  --imb-type-subtitle-2: 18px;
+  --imb-type-body-1: 18px;
+  --imb-type-body-2: 16px;
 }
 
 html {
@@ -346,6 +534,8 @@ body {
   background: var(--imb-neutral-100);
   color: var(--imb-body);
   font-family: 'Roboto', sans-serif;
+  font-size: var(--imb-type-body-2);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -362,6 +552,48 @@ h6,
 
 .font-body,
 .font-label {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+/* ToDo(type-scale): if future pages need smaller local titles, add semantic classes instead of new ad-hoc Tailwind sizes. */
+h1 {
+  font-size: clamp(42px, 5vw, var(--imb-type-h1)) !important;
+  line-height: 1.08 !important;
+}
+
+h2:not([class*="text-sm"]):not([class*="text-xs"]) {
+  font-size: clamp(34px, 4vw, var(--imb-type-h2)) !important;
+  line-height: 1.1 !important;
+}
+
+h3:not([class*="text-sm"]):not([class*="text-base"]):not([class*="text-lg"]):not([class*="text-xl"]) {
+  font-size: clamp(30px, 3.4vw, var(--imb-type-h3)) !important;
+  line-height: 1.15 !important;
+}
+
+p,
+li,
+td,
+th {
+  font-family: 'Roboto', sans-serif;
+}
+
+nav a,
+nav button,
+footer a,
+footer p,
+button,
+input,
+select,
+textarea,
+.nav-cta,
+.wa-link,
+.lang-switcher-btn,
+.catalog-filter-button,
+.catalog-search,
+.catalog-select,
+.cmp-cell,
+.cmp-row-label {
   font-family: 'Roboto', sans-serif !important;
 }
 
@@ -511,6 +743,11 @@ h6,
   color: var(--imb-white) !important;
 }
 
+.tracking-tight,
+.tracking-tighter {
+  letter-spacing: 0 !important;
+}
+
 .rounded-lg,
 .rounded-xl,
 .rounded-2xl,
@@ -531,21 +768,21 @@ textarea {
   border-radius: 9999px !important;
 }
 
-/* Pill-shape every actionable button + button-like link.
-   - Small rounded (`rounded`, `rounded-sm`, `rounded-md`) on anchors/buttons → pill.
-   - `rounded-lg` only becomes pill when element is a flex/inline-flex CTA (button-like).
-   - `rounded-xl` / `rounded-2xl` always stay card-radius (content panels).
-   - Inputs/selects/textareas keep var(--imb-radius-control). */
+/* ToDo(button-radius): manter CTAs e controles acionáveis em formato pill;
+   cards continuam usando var(--imb-radius-card). */
 a.rounded,
 a.rounded-sm,
 a.rounded-md,
 button.rounded,
 button.rounded-sm,
 button.rounded-md,
+button:not(.picker-card),
 .btn-solid-orange,
 .btn-secondary-light,
 .nav-cta,
 .wa-link,
+a[class*="px-"][class*="py-"][class*="rounded"],
+span[class*="px-"][class*="py-"][class*="rounded"][class*="bg-"],
 a[class*="inline-flex"].rounded-lg,
 a[class~="flex"].rounded-lg,
 button.rounded-lg[class*="inline-flex"],
@@ -706,18 +943,17 @@ textarea:disabled,
 
 /* ToDo(compare-picker): keep this icon CSS-drawn; icon fonts have uneven glyph boxes here. */
 .picker-card .picker-toggle {
-  background: var(--imb-white);
-  border: 1px solid rgba(31, 35, 34, 0.08);
+  background: var(--imb-neutral-200);
+  border: 0;
   border-radius: 9999px;
-  box-shadow: 0 6px 14px rgba(31, 35, 34, 0.16);
   color: var(--imb-neutral-600);
-  height: 28px;
+  height: 24px;
   pointer-events: none;
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: 10px;
+  top: 10px;
   transition: background-color var(--imb-transition), border-color var(--imb-transition), color var(--imb-transition);
-  width: 28px;
+  width: 24px;
 }
 
 .picker-card .picker-toggle::before,
@@ -734,18 +970,17 @@ textarea:disabled,
 .picker-card .picker-toggle.is-add::before {
   height: 2px;
   transform: translate(-50%, -50%);
-  width: 12px;
+  width: 10px;
 }
 
 .picker-card .picker-toggle.is-add::after {
-  height: 12px;
+  height: 10px;
   transform: translate(-50%, -50%);
   width: 2px;
 }
 
 .picker-card .picker-toggle.is-selected {
   background: var(--imb-orange);
-  border-color: var(--imb-orange);
   color: var(--imb-white);
 }
 
@@ -813,7 +1048,7 @@ textarea:disabled,
 }
 .world-map-stat-label {
   color: var(--imb-yellow);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -845,7 +1080,7 @@ textarea:disabled,
 .testimonial-quote-mark {
   color: var(--imb-neutral-800);
   display: block;
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 4rem;
   font-weight: 700;
   height: 32px;
@@ -974,7 +1209,31 @@ textarea:disabled,
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform var(--imb-transition);
+}
+
+#obras .case-card-link {
+  grid-template-columns: 1fr;
+  min-height: 0;
+}
+
+#obras .case-card-media {
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+}
+
+/* ToDo(case-card-media): ajustar estes pontos por foto quando as imagens finais de cada case forem aprovadas. */
+.case-card[data-case-id="aeroporto-floripa"] .case-card-media img {
+  object-position: 48% center;
+}
+
+.case-card[data-case-id="anel-joinville"] .case-card-media img {
+  object-position: 50% center;
+}
+
+.case-card[data-case-id="rodoanel-sp"] .case-card-media img {
+  object-position: 52% center;
 }
 
 .case-card:hover .case-card-media img {
@@ -993,7 +1252,7 @@ textarea:disabled,
   align-items: center;
   color: var(--imb-orange);
   display: flex;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.78rem;
   font-weight: 800;
   gap: 0.35rem;
@@ -1355,23 +1614,20 @@ footer .material-symbols-outlined.text-primary {
    Long equipment names (e.g. "Pavimentadora IMB-7300 ULTRA") otherwise push picker
    rows and comparison header cells to different heights. Two-line clamp + reserved
    min-height keeps every card the same vertical size — only on the compare page. */
-.picker-card .font-headline,
+.picker-title,
 .cmp-head-cell .font-headline {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 2.4em;
 }
-.picker-card .text-on-surface-variant,
 .cmp-head-cell .text-on-surface-variant {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.picker-card .text-on-surface-variant,
 .cmp-head-cell .cmp-selected-subtitle {
   line-height: 1.25;
   min-height: 2.5em;
@@ -1431,7 +1687,7 @@ footer .material-symbols-outlined.text-primary {
   color: var(--imb-black);
   cursor: pointer;
   display: inline-flex;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   gap: 0.4rem;
@@ -1479,7 +1735,7 @@ footer .material-symbols-outlined.text-primary {
   border-radius: 8px;
   color: var(--imb-black);
   display: flex;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   gap: 0.5rem;

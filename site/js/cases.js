@@ -363,7 +363,7 @@ window.IMB_CASES = (function () {
     }).join('');
 
     return ''
-      + '<article class="case-card group fade-in-up">'
+      + '<article class="case-card group fade-in-up" data-case-id="' + escHtml(c.id) + '">'
       +   '<a href="' + escHtml(caseHref(c)) + '" class="case-card-link" aria-label="' + escHtml(title) + '">'
       +     '<div class="case-card-media">'
       +       '<img src="' + escHtml(c.hero_image) + '" alt="' + escHtml(title) + '" loading="lazy" />'

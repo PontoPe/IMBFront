@@ -78,14 +78,9 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         <aside class="products-sidebar lg:col-span-3 space-y-8 fade-in-up">
-          <section>
-            <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-6 flex items-center gap-2 font-headline"><span class="w-1.5 h-6 bg-primary"></span>Categories</h3>
-            <!-- TODO(category-list): mirror of produtos.html. Divider is <span class="block h-px ..."> between rows. -->
-            <div class="rounded-lg overflow-hidden bg-surface-container-low">
-              <a href="paver.html" class="block w-full text-left px-4 py-3 bg-surface-container-high text-on-surface font-bold">Concrete Pavers</a>
-              <span class="block h-px bg-outline-variant/40"></span>
-              <a href="extruder.html" class="block w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-high font-semibold transition-colors">Concrete Extruders</a>
-            </div>
+          <section id="catalog-controls" class="catalog-control-panel" aria-label="Catalog filters">
+            <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-6 flex items-center gap-2 font-headline"><span class="w-1.5 h-6 bg-primary"></span>Filters</h3>
+            <!-- TODO(catalog-controls): controls are populated by js/catalog.js to keep PT/EN/ES synchronized. -->
           </section>
           <a href="compare.html" class="block bg-primary-container hover:bg-primary text-on-primary-container p-6 rounded-xl transition-colors group">
             <span class="material-symbols-outlined text-on-primary-container text-2xl mb-3">compare_arrows</span>

@@ -73,14 +73,9 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         <aside class="products-sidebar lg:col-span-3 space-y-8 fade-in-up">
-          <section>
-            <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-6 flex items-center gap-2 font-headline"><span class="w-1.5 h-6 bg-primary"></span>Categorías</h3>
-            <!-- TODO(category-list): espejo de produtos.html. El divisor es <span class="block h-px ..."> entre filas. -->
-            <div class="rounded-lg overflow-hidden bg-surface-container-low">
-              <a href="pavimentadora.html" class="block w-full text-left px-4 py-3 bg-surface-container-high text-on-surface font-bold">Pavimentadoras de Concreto</a>
-              <span class="block h-px bg-outline-variant/40"></span>
-              <a href="extrusora.html" class="block w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-high font-semibold transition-colors">Extrusoras de Concreto</a>
-            </div>
+          <section id="catalog-controls" class="catalog-control-panel" aria-label="Filtros del catálogo">
+            <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-6 flex items-center gap-2 font-headline"><span class="w-1.5 h-6 bg-primary"></span>Filtros</h3>
+            <!-- TODO(catalog-controls): controles poblados por js/catalog.js para mantener PT/EN/ES sincronizados. -->
           </section>
           <a href="comparar.html" class="block bg-primary-container hover:bg-primary text-on-primary-container p-6 rounded-xl transition-colors group">
             <span class="material-symbols-outlined text-on-primary-container text-2xl mb-3">compare_arrows</span>
