@@ -10,6 +10,13 @@
   transform: translateY(0);
 }
 
+/* Keep critical product navigation visible even if animation JS is delayed,
+   blocked, or unsupported by an older browser. */
+.products-sidebar.fade-in-up {
+  opacity: 1;
+  transform: none;
+}
+
 /* Single-color button utilities. */
 .btn-solid-orange {
   background: var(--imb-orange);

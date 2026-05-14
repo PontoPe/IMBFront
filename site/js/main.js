@@ -133,6 +133,10 @@ window.IMB_resolveWaMsg = function (el) {
     animatedElements.forEach(function (el) {
       observer.observe(el);
     });
+  } else {
+    animatedElements.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
   }
 
   // Delegação global: qualquer .wa-link (inclusive renderizado dinamicamente
