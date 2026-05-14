@@ -1070,9 +1070,7 @@ footer .material-symbols-outlined.text-primary {
   display: inline-flex;
   align-items: center;
 }
-/* Footer has dark background — force logo to white so it stays legible regardless of source colors. */
+/* Footer renders the logo in its native SVG colors — no invert/desaturate. */
 .site-logo-footer .site-logo-img {
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
-  height: 44px;
+  height: 56px;
 }
