@@ -268,13 +268,12 @@ window.IMB_resolveWaMsg = function (el) {
 
     var totalsEl = document.getElementById('cases-totals');
     if (totalsEl) {
-      // TODO(consolidated-totals): substitute null with the real consolidated numbers
-      // once the client doc is shared. Placeholder renders "Em breve" per language.
+      var t = window.IMB_CASES.totals();
       totalsEl.innerHTML = [
-        renderTotalCard(null, 'km', mainUi('totalRoad'),     'route'),
-        renderTotalCard(null, 'km', mainUi('totalBarrier'),  'security'),
-        renderTotalCard(null, 'm³', mainUi('totalConcrete'), 'package_2'),
-        renderTotalCard(null, '',   mainUi('totalProjects'), 'verified'),
+        renderTotalCard(Math.round(t.kmRodovia),  'km', mainUi('totalRoad'),     'route'),
+        renderTotalCard(Math.round(t.kmBarreira), 'km', mainUi('totalBarrier'),  'security'),
+        renderTotalCard(Math.round(t.m3),         'm³', mainUi('totalConcrete'), 'package_2'),
+        renderTotalCard(t.obras,                  '',   mainUi('totalProjects'), 'verified'),
       ].join('');
     }
 
