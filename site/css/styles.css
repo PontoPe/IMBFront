@@ -1764,7 +1764,7 @@ footer .material-symbols-outlined.text-primary {
   display: none;
   list-style: none;
   margin: 0.5rem 0 0;
-  min-width: 68px;
+  min-width: 148px;
   padding: 0.4rem;
   position: absolute;
   right: 0;
@@ -1781,7 +1781,8 @@ footer .material-symbols-outlined.text-primary {
   color: var(--imb-black);
   display: flex;
   font-family: 'Roboto', sans-serif;
-  justify-content: center;
+  gap: 0.55rem;
+  justify-content: flex-start;
   padding: 0.55rem 0.65rem;
   text-decoration: none;
 }
@@ -1790,12 +1791,10 @@ footer .material-symbols-outlined.text-primary {
   background: var(--imb-neutral-200);
   color: var(--imb-orange);
 }
-.lang-switcher-menu a .lang-code {
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-left: auto;
-  text-transform: uppercase;
+.lang-switcher-menu a .lang-name {
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--imb-neutral-600);
+  white-space: nowrap;
 }
-.lang-switcher-menu a.is-current .lang-code { color: var(--imb-orange); }
+.lang-switcher-menu a.is-current .lang-name { color: var(--imb-orange); }
