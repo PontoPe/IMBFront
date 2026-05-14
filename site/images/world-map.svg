@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa-mundi halftone com regioes atendidas pela IMB Brasil">
+  <defs>
+    <pattern id="dotPattern" patternUnits="userSpaceOnUse" width="9" height="9">
+      <circle cx="4.5" cy="4.5" r="1.5" fill="#4a5cb5" opacity="0.95"/>
+    </pattern>
+    <radialGradient id="pinHead" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffe48a"/>
+      <stop offset="55%" stop-color="#fdc531"/>
+      <stop offset="100%" stop-color="#b78a16"/>
+    </radialGradient>
+    <linearGradient id="pinStem" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#cccccc"/>
+      <stop offset="100%" stop-color="#888888"/>
+    </linearGradient>
+    <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.2"/>
+      <feOffset dx="0" dy="2" result="off"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="500" fill="#0a0a0d"/>
+
+  <!-- Continents filled with dot pattern. -->
+  <g fill="url(#dotPattern)">
+    <!-- Greenland -->
+    <path d="M395,40 L460,32 L478,55 L470,82 L445,92 L418,88 L402,72 Z"/>
+    <!-- Iceland -->
+    <path d="M460,62 L478,58 L484,72 L472,80 L460,74 Z"/>
+    <!-- North America (Canada + USA + Mexico) -->
+    <path d="M40,72 Q72,55 110,55 L165,52 L230,55 L295,72 L345,80 L378,82 L405,90 L412,108 L398,128 L372,138 L348,145 L322,158 L296,176 L268,192 L240,205 L218,210 L200,225 L188,212 L168,200 L148,192 L132,180 L118,165 L98,140 L82,118 L65,98 Z"/>
+    <!-- Caribbean -->
+    <path d="M260,200 L290,200 L312,213 L300,225 L268,222 Z"/>
+    <!-- Cuba -->
+    <path d="M268,196 L302,194 L308,202 L292,206 L272,204 Z"/>
+    <!-- South America -->
+    <path d="M268,222 L295,218 L320,225 L348,242 L362,265 L370,295 L362,322 L348,348 L332,376 L318,400 L302,418 L290,422 L278,402 L272,378 L268,352 L262,322 L256,294 L255,268 L256,244 Z"/>
+    <!-- UK -->
+    <path d="M465,92 L488,92 L492,112 L478,120 L462,114 Z"/>
+    <!-- Ireland -->
+    <path d="M448,108 L462,108 L466,118 L455,124 L446,118 Z"/>
+    <!-- Eurasia mainland -->
+    <path d="M455,75 L508,62 L555,55 L605,52 L680,50 L760,50 L840,55 L905,60 L955,72 L985,88 L982,108 L955,118 L922,122 L892,128 L862,138 L835,148 L810,160 L788,170 L762,172 L735,170 L712,168 L690,160 L668,150 L645,138 L625,128 L605,118 L585,128 L562,135 L540,142 L518,148 L498,150 L478,146 L468,135 L460,118 L455,102 Z"/>
+    <!-- Iberia -->
+    <path d="M462,140 L498,138 L508,152 L498,165 L472,162 L462,155 Z"/>
+    <!-- Italy -->
+    <path d="M528,128 L542,128 L548,148 L540,162 L530,158 L528,142 Z"/>
+    <!-- Balkans/Greece -->
+    <path d="M548,138 L572,138 L578,156 L562,162 L550,152 Z"/>
+    <!-- Anatolia -->
+    <path d="M580,140 L620,138 L638,150 L632,162 L598,162 L580,154 Z"/>
+    <!-- Arabian Peninsula -->
+    <path d="M598,170 L632,170 L660,182 L668,205 L660,225 L640,232 L618,222 L605,206 L598,188 Z"/>
+    <!-- India -->
+    <path d="M695,178 L720,178 L738,192 L748,212 L738,232 L720,238 L708,225 L700,208 L695,192 Z"/>
+    <!-- SE Asia mainland -->
+    <path d="M755,190 L785,195 L800,212 L795,232 L778,238 L760,228 L752,212 Z"/>
+    <!-- Indonesia -->
+    <path d="M780,250 L820,248 L850,260 L860,275 L838,282 L810,280 L788,272 L778,262 Z"/>
+    <!-- Philippines -->
+    <path d="M835,215 L848,212 L854,232 L842,242 L832,232 Z"/>
+    <!-- Japan -->
+    <path d="M875,138 L892,138 L902,152 L898,172 L884,172 L872,158 Z"/>
+    <!-- Korea -->
+    <path d="M855,148 L868,148 L872,162 L862,170 L854,162 Z"/>
+    <!-- Africa -->
+    <path d="M465,162 L502,158 L545,165 L588,175 L615,188 L622,212 L618,240 L608,268 L592,298 L578,328 L560,352 L540,365 L520,358 L502,338 L488,310 L475,282 L465,255 L458,228 L455,202 L460,178 Z"/>
+    <!-- Madagascar -->
+    <path d="M620,295 L632,294 L638,318 L628,332 L620,322 Z"/>
+    <!-- Australia -->
+    <path d="M822,310 L862,304 L900,308 L928,318 L932,338 L912,355 L880,360 L848,358 L826,346 L815,332 Z"/>
+    <!-- Tasmania -->
+    <path d="M895,372 L912,370 L915,382 L902,388 L893,382 Z"/>
+    <!-- New Zealand -->
+    <path d="M940,370 L952,368 L956,385 L948,392 L938,386 Z"/>
+  </g>
+
+  <!-- Yellow push-pin markers per region (centroid coords). -->
+  <g filter="url(#pinShadow)">
+    <!-- North America (USA centroid) -->
+    <g><line x1="231" y1="144" x2="231" y2="170" stroke="url(#pinStem)" stroke-width="2.4"/><circle cx="231" cy="144" r="13" fill="url(#pinHead)" stroke="#7a5a10" stroke-width="0.8"/><circle cx="227" cy="140" r="3" fill="#fff7d6" opacity="0.85"/></g>
+    <!-- Central America -->
+    <g><line x1="261" y1="210" x2="261" y2="232" stroke="url(#pinStem)" stroke-width="2.4"/><circle cx="261" cy="210" r="11" fill="url(#pinHead)" stroke="#7a5a10" stroke-width="0.8"/><circle cx="258" cy="207" r="2.5" fill="#fff7d6" opacity="0.85"/></g>
+    <!-- South America (Brazil) -->
+    <g><line x1="358" y1="289" x2="358" y2="318" stroke="url(#pinStem)" stroke-width="2.6"/><circle cx="358" cy="289" r="14" fill="url(#pinHead)" stroke="#7a5a10" stroke-width="0.8"/><circle cx="354" cy="285" r="3.3" fill="#fff7d6" opacity="0.85"/></g>
+    <!-- Europe -->
+    <g><line x1="525" y1="118" x2="525" y2="144" stroke="url(#pinStem)" stroke-width="2.4"/><circle cx="525" cy="118" r="12" fill="url(#pinHead)" stroke="#7a5a10" stroke-width="0.8"/><circle cx="521" cy="114" r="2.8" fill="#fff7d6" opacity="0.85"/></g>
+    <!-- Africa -->
+    <g><line x1="540" y1="250" x2="540" y2="276" stroke="url(#pinStem)" stroke-width="2.4"/><circle cx="540" cy="250" r="12" fill="url(#pinHead)" stroke="#7a5a10" stroke-width="0.8"/><circle cx="536" cy="246" r="2.8" fill="#fff7d6" opacity="0.85"/></g>
+    <!-- Asia -->
+    <g><line x1="740" y1="160" x2="740" y2="188" stroke="url(#pinStem)" stroke-width="2.6"/><circle cx="740" cy="160" r="13" fill="url(#pinHead)" stroke="#7a5a10" stroke-width="0.8"/><circle cx="736" cy="156" r="3" fill="#fff7d6" opacity="0.85"/></g>
+  </g>
+</svg>

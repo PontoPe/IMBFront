@@ -195,13 +195,19 @@ window.IMB_resolveWaMsg = function (el) {
     return '';
   }
 
+  var COMING_SOON = { pt: 'Em breve', en: 'Coming soon', es: 'Próximamente' };
   function renderTotalCard(value, unit, label, icon) {
+    var hasValue = (typeof value === 'number' && value > 0) || (typeof value === 'string' && value.length > 0);
+    var valueHtml;
+    if (hasValue) {
+      valueHtml = fmtNum(value) + (unit ? ' <span class="text-base md:text-lg text-on-surface-variant font-bold">' + escHtml(unit) + '</span>' : '');
+    } else {
+      valueHtml = '<span class="text-xl md:text-2xl text-on-surface-variant font-bold">' + escHtml(COMING_SOON[I18N_LANG] || COMING_SOON.pt) + '</span>';
+    }
     return ''
-      + '<div class="bg-surface-container-lowest rounded-xl p-5 md:p-6 border-b-4 border-primary/30 fade-in-up">'
+      + '<div class="bg-surface-container-lowest rounded-xl p-5 md:p-6 border-b-4 border-outline-variant fade-in-up">'
       +   '<span class="material-symbols-outlined text-3xl md:text-4xl text-primary mb-3 block">' + escHtml(icon) + '</span>'
-      +   '<div class="font-headline font-black text-3xl md:text-4xl text-on-surface tracking-tight leading-none">'
-      +     fmtNum(value) + (unit ? ' <span class="text-base md:text-lg text-on-surface-variant font-bold">' + escHtml(unit) + '</span>' : '')
-      +   '</div>'
+      +   '<div class="font-headline font-black text-3xl md:text-4xl text-on-surface tracking-tight leading-none">' + valueHtml + '</div>'
       +   '<div class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-on-surface-variant mt-2">' + escHtml(label) + '</div>'
       + '</div>';
   }
@@ -214,8 +220,8 @@ window.IMB_resolveWaMsg = function (el) {
       : caseUrl + '?id=' + encodeURIComponent(c.id);
     return ''
       + '<article class="bg-surface-container-lowest rounded-xl p-6 md:p-8 flex flex-col gap-4 shadow-sm">'
-      +   '<span class="material-symbols-outlined text-primary text-3xl">format_quote</span>'
-      +   '<p class="text-on-surface text-sm md:text-base leading-relaxed flex-1 italic">"' + escHtml(T(t.quote)) + '"</p>'
+      +   '<span class="testimonial-quote-mark" aria-hidden="true">“</span>'
+      +   '<p class="text-on-surface text-sm md:text-base leading-relaxed flex-1 italic">“' + escHtml(T(t.quote)) + '”</p>'
       +   '<div class="flex items-start justify-between gap-3 pt-4 border-t border-surface-container-high">'
       +     '<div class="min-w-0">'
       +       '<div class="font-headline font-bold text-sm text-on-surface leading-tight">' + escHtml(t.author) + '</div>'
@@ -258,12 +264,13 @@ window.IMB_resolveWaMsg = function (el) {
 
     var totalsEl = document.getElementById('cases-totals');
     if (totalsEl) {
-      var totals = window.IMB_CASES.totals();
+      // TODO(consolidated-totals): substitute null with the real consolidated numbers
+      // once the client doc is shared. Placeholder renders "Em breve" per language.
       totalsEl.innerHTML = [
-        renderTotalCard(totals.kmRodovia,  'km', mainUi('totalRoad'),     'route'),
-        renderTotalCard(totals.kmBarreira, 'km', mainUi('totalBarrier'),  'security'),
-        renderTotalCard(totals.m3,         'm³', mainUi('totalConcrete'), 'package_2'),
-        renderTotalCard(totals.obras,      '',   mainUi('totalProjects'), 'verified'),
+        renderTotalCard(null, 'km', mainUi('totalRoad'),     'route'),
+        renderTotalCard(null, 'km', mainUi('totalBarrier'),  'security'),
+        renderTotalCard(null, 'm³', mainUi('totalConcrete'), 'package_2'),
+        renderTotalCard(null, '',   mainUi('totalProjects'), 'verified'),
       ].join('');
     }
 

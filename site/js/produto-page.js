@@ -32,8 +32,10 @@
     engineLabel:   { pt: 'Motor', en: 'Engine', es: 'Motor' },
     weightLabel:   { pt: 'Peso', en: 'Weight', es: 'Peso' },
     profilesLabel: { pt: 'perfis', en: 'profiles', es: 'perfiles' },
+    vibratorsLabel:{ pt: 'vibradores', en: 'vibrators', es: 'vibradores' },
     requestQuote:  { pt: 'Solicitar Orçamento', en: 'Request a Quote', es: 'Solicitar Cotización' },
-    emailContact:  { pt: 'Contato por E-mail', en: 'Email Contact', es: 'Contacto por Email' },
+    consultManual: { pt: 'Consulte o Manual', en: 'Consult the Manual', es: 'Consulte el Manual' },
+    manualUnavailable: { pt: 'Manual em breve', en: 'Manual coming soon', es: 'Manual próximamente' },
     waHint:        { pt: 'Seg–Sex · 8h–18h · Resposta em ~15min', en: 'Mon–Fri · 8am–6pm · Reply in ~15min', es: 'Lun–Vie · 8h–18h · Respuesta en ~15min' },
     techSpecs:     { pt: 'Especificações Técnicas', en: 'Technical Specifications', es: 'Especificaciones Técnicas' },
     yes:           { pt: 'Sim', en: 'Yes', es: 'Sí' },
@@ -101,6 +103,13 @@
   var lineUrl     = (window.IMB_I18N && window.IMB_I18N.productLineUrl) ? window.IMB_I18N.productLineUrl(prod) : (prod.url || produtosUrl);
 
   // ---- Hero ----
+  var manualBtnHtml;
+  if (prod.manualUrl) {
+    manualBtnHtml = '<a href="' + escHtml(prod.manualUrl) + '" target="_blank" rel="noopener" class="w-full border-2 border-outline-variant hover:bg-surface-container-high text-on-surface font-headline font-bold py-3 md:py-4 px-8 rounded-lg text-center uppercase tracking-widest text-sm flex justify-center items-center gap-2 transition-all"><span class="material-symbols-outlined text-primary">picture_as_pdf</span>' + escHtml(ui('consultManual')) + '</a>';
+  } else {
+    manualBtnHtml = '<span class="w-full border-2 border-outline-variant text-on-surface-variant font-headline font-bold py-3 md:py-4 px-8 rounded-lg text-center uppercase tracking-widest text-sm flex justify-center items-center gap-2 opacity-70 cursor-not-allowed"><span class="material-symbols-outlined text-on-surface-variant">picture_as_pdf</span>' + escHtml(ui('manualUnavailable')) + '</span>';
+  }
+
   var hero = ''
     + '<section class="relative w-full bg-surface-container-low overflow-hidden">'
     +   '<div class="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">'
@@ -122,26 +131,24 @@
     +         '<span class="text-primary font-semibold">' + escHtml(prod.name) + '</span>'
     +       '</div>'
     +       '<div>'
-    +         '<span class="text-tertiary font-bold tracking-[0.2em] uppercase text-sm">' + escHtml(prodSerie || '') + '</span>'
-    +         '<h1 class="mt-2 text-4xl md:text-5xl lg:text-6xl font-black font-headline text-on-surface tracking-tighter leading-none">'
-    +           escHtml(prodTipo || '') + ' <span class="text-primary-container bg-on-surface px-2">' + escHtml(prod.name) + '</span>'
+    +         '<span class="text-primary font-bold tracking-[0.2em] uppercase text-sm">' + escHtml(prodSerie || '') + '</span>'
+    +         '<h1 class="mt-3 text-4xl md:text-5xl lg:text-6xl font-black font-headline text-on-surface tracking-tighter leading-[1.05]">'
+    +           escHtml(prodTipo || '') + ' <span class="text-primary">' + escHtml(prod.name) + '</span>'
     +         '</h1>'
     +         '<p class="mt-6 text-on-surface-variant text-base md:text-lg leading-relaxed max-w-md">' + escHtml(prodAplic || '') + '</p>'
     +       '</div>'
     +       '<div class="flex flex-wrap gap-3">'
-    +         (prod.specs.largura_max ? '<div class="spec-chip bg-tertiary-container px-4 py-2"><span class="text-xs font-bold text-on-tertiary-container uppercase tracking-tight">' + ui('widthLabel') + ': ' + prod.specs.largura_max + 'm</span></div>' : '')
-    +         (prod.specs.motor_hp ? '<div class="spec-chip bg-tertiary-container px-4 py-2"><span class="text-xs font-bold text-on-tertiary-container uppercase tracking-tight">' + ui('engineLabel') + ': ' + prod.specs.motor_hp + 'hp</span></div>' : '')
-    +         (prod.specs.peso ? '<div class="spec-chip bg-tertiary-container px-4 py-2"><span class="text-xs font-bold text-on-tertiary-container uppercase tracking-tight">' + ui('weightLabel') + ': ' + prod.specs.peso.toLocaleString(LOCALE) + 'kg</span></div>' : '')
-    +         (prod.specs.perfis ? '<div class="spec-chip bg-tertiary-container px-4 py-2"><span class="text-xs font-bold text-on-tertiary-container uppercase tracking-tight">' + prod.specs.perfis + ' ' + ui('profilesLabel') + '</span></div>' : '')
+    +         (prod.specs.largura_perfil ? '<div class="spec-chip bg-surface-container-high px-4 py-2"><span class="text-xs font-bold text-on-surface uppercase tracking-tight">' + ui('widthLabel') + ': ' + prod.specs.largura_perfil + 'mm</span></div>' : '')
+    +         (prod.specs.motor_hp ? '<div class="spec-chip bg-surface-container-high px-4 py-2"><span class="text-xs font-bold text-on-surface uppercase tracking-tight">' + ui('engineLabel') + ': ' + prod.specs.motor_hp + 'cv</span></div>' : '')
+    +         (prod.specs.peso ? '<div class="spec-chip bg-surface-container-high px-4 py-2"><span class="text-xs font-bold text-on-surface uppercase tracking-tight">' + ui('weightLabel') + ': ' + prod.specs.peso.toLocaleString(LOCALE) + 'kg</span></div>' : '')
+    +         (prod.specs.vibradores ? '<div class="spec-chip bg-surface-container-high px-4 py-2"><span class="text-xs font-bold text-on-surface uppercase tracking-tight">' + prod.specs.vibradores + ' ' + ui('vibratorsLabel') + '</span></div>' : '')
     +       '</div>'
     +       '<div class="flex flex-col gap-3 pt-2">'
+    +         manualBtnHtml
     +         '<a href="#" class="wa-link w-full bg-primary-container hover:bg-primary text-on-primary-container font-headline font-black py-4 md:py-5 px-8 rounded-lg text-base md:text-lg uppercase tracking-wider flex justify-center items-center gap-3 transition-all" target="_blank" rel="noopener" data-wa-msg="' + escHtml(waMsg) + '">'
     +           '<span class="material-symbols-outlined" style="font-variation-settings:\'FILL\' 1;">chat</span>' + escHtml(ui('requestQuote'))
     +         '</a>'
     +         '<span class="wa-hint">' + escHtml(ui('waHint')) + '</span>'
-    +         '<a href="' + escHtml(contatoUrl) + '" class="w-full border-2 border-outline-variant hover:bg-surface-container-high text-on-surface font-headline font-bold py-3 md:py-4 px-8 rounded-lg text-center uppercase tracking-widest text-sm flex justify-center items-center gap-2 transition-all">'
-    +           '<span class="material-symbols-outlined">mail</span>' + escHtml(ui('emailContact'))
-    +         '</a>'
     +       '</div>'
     +     '</div>'
     +   '</div>'

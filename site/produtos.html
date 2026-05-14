@@ -144,7 +144,8 @@
         </aside>
 
         <div class="lg:col-span-9">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8" data-rendered-by="catalog.js"></div>
+          <div hidden>
 
             <a href="pavimentadora.html" class="group bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col transition-all hover:shadow-2xl hover:shadow-on-surface/5 block fade-in-up">
               <div class="relative aspect-[16/10] overflow-hidden bg-surface-container">
@@ -290,6 +291,8 @@
   </a>
 
   <script src="js/i18n.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

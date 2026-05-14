@@ -94,16 +94,13 @@
     pickerEl.innerHTML = products.map((p) => {
       const isOn = selected.has(p.id);
       const ringClass = isOn ? 'ring-2 ring-primary border-primary' : 'border-surface-container-high hover:border-outline-variant';
-      const badgeClass = isOn ? 'bg-primary text-on-primary' : 'bg-surface-container-high text-on-surface-variant';
-      const badgeIcon = isOn ? 'check' : 'add';
+      const toggleStateClass = isOn ? 'is-selected' : 'is-add';
       return `
         <button type="button" data-id="${p.id}" aria-pressed="${isOn}"
           class="picker-card text-left bg-surface-container-lowest rounded-xl border-2 ${ringClass} overflow-hidden transition-all group">
           <div class="relative aspect-[4/3] overflow-hidden bg-surface-container">
             <img src="${p.image}" alt="${escapeAttr(p.name)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-            <span class="absolute top-2 right-2 w-7 h-7 rounded-full ${badgeClass} flex items-center justify-center shadow">
-              <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">${badgeIcon}</span>
-            </span>
+            <span class="picker-toggle ${toggleStateClass}" aria-hidden="true"></span>
           </div>
           <div class="p-3">
             <div class="font-headline font-black text-sm md:text-base uppercase tracking-tight text-on-surface leading-tight">${escapeHTML(p.name)}</div>
@@ -139,8 +136,8 @@
 
     if (field.type === 'bool') {
       return v
-        ? `<span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-tertiary/10 text-tertiary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">check_circle</span></span>`
-        : `<span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-on-surface/5 text-on-surface-variant/60"><span class="material-symbols-outlined">cancel</span></span>`;
+        ? `<span class="cmp-bool cmp-bool-yes"><span class="material-symbols-outlined" style="font-size:inherit;line-height:1;">check</span></span>`
+        : `<span class="cmp-bool cmp-bool-no"><span class="material-symbols-outlined" style="font-size:inherit;line-height:1;">close</span></span>`;
     }
 
     if (field.type === 'bar') {
@@ -197,10 +194,10 @@
           <div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container mb-3">
             <img src="${p.image}" alt="${escapeAttr(p.name)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
           </div>
-          <div class="font-headline font-black text-base md:text-lg uppercase tracking-tight leading-tight text-on-surface">${escapeHTML(p.name)}</div>
-          <div class="text-[10px] md:text-xs text-on-surface-variant mt-1">${escapeHTML(T(p.subtitle))}</div>
+          <div class="cmp-selected-name font-headline font-black text-base md:text-lg uppercase tracking-tight leading-tight text-on-surface">${escapeHTML(p.name)}</div>
+          <div class="cmp-selected-subtitle text-[10px] md:text-xs text-on-surface-variant mt-1">${escapeHTML(T(p.subtitle))}</div>
         </a>
-        <div class="mt-3 flex flex-wrap gap-2 items-center">
+        <div class="cmp-selected-actions mt-3 flex flex-wrap gap-2 items-start">
           <a href="#" class="wa-link inline-flex items-center gap-1.5 bg-success hover:bg-success-strong text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded transition-colors"
              data-wa-msg="${escapeAttr(waMsg)}" target="_blank" rel="noopener">
             <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">chat</span>WhatsApp
