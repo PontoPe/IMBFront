@@ -10,37 +10,45 @@
   var products = window.IMB_PRODUCTS.products || [];
   var controls = document.getElementById('catalog-controls');
   var LANG = (window.IMB_I18N && window.IMB_I18N.lang) || 'pt';
-  var state = { type: 'all', line: 'all', capability: 'all', sort: 'recommended', query: '' };
+  var state = { type: 'all', line: 'all', capability: 'all', profileType: 'all', sort: 'recommended', query: '' };
 
   var UI = {
-    title:          { pt: 'Filtros', en: 'Filters', es: 'Filtros' },
-    search:         { pt: 'Busca', en: 'Search', es: 'Búsqueda' },
-    searchPh:       { pt: 'Modelo, aplicação ou linha', en: 'Model, application or line', es: 'Modelo, aplicación o línea' },
-    category:       { pt: 'Categoria', en: 'Category', es: 'Categoría' },
-    all:            { pt: 'Todos', en: 'All', es: 'Todos' },
-    pavers:         { pt: 'Pavimentadoras', en: 'Pavers', es: 'Pavimentadoras' },
-    extruders:      { pt: 'Extrusoras', en: 'Extruders', es: 'Extrusoras' },
-    line:           { pt: 'Linha', en: 'Line', es: 'Línea' },
-    anyLine:        { pt: 'Todas as linhas', en: 'All lines', es: 'Todas las líneas' },
-    capability:     { pt: 'Recurso', en: 'Feature', es: 'Recurso' },
-    allFeatures:    { pt: 'Todos os recursos', en: 'All features', es: 'Todos los recursos' },
-    automated:      { pt: 'Automação / sensores', en: 'Automation / sensors', es: 'Automatización / sensores' },
-    steelTracks:    { pt: 'Esteiras de aço', en: 'Steel tracks', es: 'Orugas de acero' },
-    clutch:         { pt: 'Com embreagem', en: 'With clutch', es: 'Con embrague' },
-    wideProfile:    { pt: 'Perfil largo', en: 'Wide profile', es: 'Perfil ancho' },
-    sort:           { pt: 'Ordenar por', en: 'Sort by', es: 'Ordenar por' },
-    recommended:    { pt: 'Recomendados', en: 'Recommended', es: 'Recomendados' },
-    powerDesc:      { pt: 'Maior potência', en: 'Highest power', es: 'Mayor potencia' },
-    widthDesc:      { pt: 'Maior perfil', en: 'Widest profile', es: 'Mayor perfil' },
-    weightAsc:      { pt: 'Mais leves', en: 'Lightest', es: 'Más livianos' },
-    nameAsc:        { pt: 'Nome A-Z', en: 'Name A-Z', es: 'Nombre A-Z' },
-    seeDetails:     { pt: 'Ver Detalhes', en: 'View Details', es: 'Ver Detalles' },
-    available:      { pt: 'Disponível', en: 'Available', es: 'Disponible' },
-    powerLabel:     { pt: 'Potência', en: 'Power', es: 'Potencia' },
-    widthLabel:     { pt: 'Largura', en: 'Width', es: 'Ancho' },
-    resultOne:      { pt: '1 equipamento', en: '1 machine', es: '1 equipo' },
-    resultsMany:    { pt: 'equipamentos', en: 'machines', es: 'equipos' },
-    noResults:      { pt: 'Nenhum equipamento encontrado com estes filtros.', en: 'No machines found with these filters.', es: 'No se encontraron equipos con estos filtros.' },
+    title:            { pt: 'Filtros',                    en: 'Filters',                es: 'Filtros' },
+    search:           { pt: 'Busca',                      en: 'Search',                 es: 'Búsqueda' },
+    searchPh:         { pt: 'Modelo, aplicação ou linha', en: 'Model, application or line', es: 'Modelo, aplicación o línea' },
+    category:         { pt: 'Categoria',                  en: 'Category',               es: 'Categoría' },
+    all:              { pt: 'Todos',                      en: 'All',                    es: 'Todos' },
+    pavers:           { pt: 'Pavimentadoras',             en: 'Pavers',                 es: 'Pavimentadoras' },
+    extruders:        { pt: 'Extrusoras',                 en: 'Extruders',              es: 'Extrusoras' },
+    automated:        { pt: 'Automatizada',               en: 'Automated',              es: 'Automatizada' },
+    line:             { pt: 'Linha',                      en: 'Line',                   es: 'Línea' },
+    anyLine:          { pt: 'Todas as linhas',            en: 'All lines',              es: 'Todas las líneas' },
+    capability:       { pt: 'Recurso',                    en: 'Feature',                es: 'Recurso' },
+    allFeatures:      { pt: 'Todos os recursos',          en: 'All features',           es: 'Todos los recursos' },
+    featureAutomated: { pt: 'Automação / sensores',       en: 'Automation / sensors',   es: 'Automatización / sensores' },
+    featureVibrator:  { pt: 'Vibrador Hidráulico',        en: 'Hydraulic Vibrator',     es: 'Vibrador Hidráulico' },
+    feature3d:        { pt: 'Monitoramento 3D',           en: '3D Monitoring',          es: 'Monitoreo 3D' },
+    featureClutch:    { pt: 'Embreagem',                  en: 'Clutch',                 es: 'Embrague' },
+    profileType:      { pt: 'Tipo de Perfil',             en: 'Profile Type',           es: 'Tipo de Perfil' },
+    allProfiles:      { pt: 'Todos os tipos',             en: 'All types',              es: 'Todos los tipos' },
+    profileMeioFio:   { pt: 'Meio-fio',                   en: 'Curb',                   es: 'Cordón' },
+    profileGuia:      { pt: 'Guia e Sarjeta',             en: 'Guide & Gutter',         es: 'Guía y Cuneta' },
+    profileCalcada:   { pt: 'Calçada',                    en: 'Sidewalk',               es: 'Vereda' },
+    profileCanaleta:  { pt: 'Canaleta de Drenagem',       en: 'Drainage Channel',       es: 'Canal de Drenaje' },
+    profileBarreira:  { pt: 'Barreira New Jersey',        en: 'New Jersey Barrier',     es: 'Barrera New Jersey' },
+    profilePavimento: { pt: 'Pavimento de Concreto',      en: 'Concrete Pavement',      es: 'Pavimento de Concreto' },
+    sort:             { pt: 'Ordenar por',                en: 'Sort by',                es: 'Ordenar por' },
+    recommended:      { pt: 'Recomendados',               en: 'Recommended',            es: 'Recomendados' },
+    powerDesc:        { pt: 'Maior potência',             en: 'Highest power',          es: 'Mayor potencia' },
+    widthDesc:        { pt: 'Maior perfil',               en: 'Widest profile',         es: 'Mayor perfil' },
+    weightAsc:        { pt: 'Mais leves',                 en: 'Lightest',               es: 'Más livianos' },
+    nameAsc:          { pt: 'Nome A-Z',                   en: 'Name A-Z',               es: 'Nombre A-Z' },
+    seeDetails:       { pt: 'Ver Detalhes',               en: 'View Details',           es: 'Ver Detalles' },
+    powerLabel:       { pt: 'Potência',                   en: 'Power',                  es: 'Potencia' },
+    widthLabel:       { pt: 'Largura Máx.',               en: 'Max. Width',             es: 'Ancho Máx.' },
+    resultOne:        { pt: '1 equipamento',              en: '1 machine',              es: '1 equipo' },
+    resultsMany:      { pt: 'equipamentos',               en: 'machines',               es: 'equipos' },
+    noResults:        { pt: 'Nenhum equipamento encontrado com estes filtros.', en: 'No machines found with these filters.', es: 'No se encontraron equipos con estos filtros.' },
   };
 
   function ui(k) {
@@ -63,7 +71,7 @@
   }
 
   function normalText(s) {
-    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   }
 
   function productDetailUrl(p) {
@@ -84,12 +92,18 @@
     return 'other';
   }
 
+  function isAutomatedLine(p) {
+    var linhaObj = p.specs.linha;
+    var linhaKey = linhaObj && typeof linhaObj === 'object' ? linhaObj.pt : T(linhaObj);
+    return linhaKey === 'Hidráulica' || linhaKey === 'Automatizada';
+  }
+
   function hasCapability(p, capability) {
     if (capability === 'all') return true;
     if (capability === 'automated') return Boolean(p.specs.direcao_auto || p.specs.sensores_auto);
-    if (capability === 'steel-tracks') return Boolean(p.specs.esteiras_aco);
+    if (capability === 'hydraulic-vibrator') return Boolean(p.specs.vibradores);
+    if (capability === '3d-monitoring') return Boolean(p.specs.monitoramento_3d);
     if (capability === 'clutch') return Boolean(p.specs.embreagem);
-    if (capability === 'wide-profile') return Number(p.specs.largura_perfil || 0) >= 1500;
     return true;
   }
 
@@ -105,9 +119,17 @@
   }
 
   function productMatches(p) {
-    if (state.type !== 'all' && kindOf(p) !== state.type) return false;
+    if (state.type === 'automated-line') {
+      if (!isAutomatedLine(p)) return false;
+    } else if (state.type !== 'all' && kindOf(p) !== state.type) {
+      return false;
+    }
     if (state.line !== 'all' && T(p.specs.linha) !== state.line) return false;
     if (!hasCapability(p, state.capability)) return false;
+    if (state.profileType !== 'all') {
+      var types = p.profile_types || [];
+      if (types.indexOf(state.profileType) === -1) return false;
+    }
     if (state.query && searchableText(p).indexOf(normalText(state.query)) === -1) return false;
     return true;
   }
@@ -153,14 +175,24 @@
       +     '<button type="button" class="catalog-filter-button" data-catalog-type="all">' + escHTML(ui('all')) + '</button>'
       +     '<button type="button" class="catalog-filter-button" data-catalog-type="paver">' + escHTML(ui('pavers')) + '</button>'
       +     '<button type="button" class="catalog-filter-button" data-catalog-type="extruder">' + escHTML(ui('extruders')) + '</button>'
+      +     '<button type="button" class="catalog-filter-button" data-catalog-type="automated-line">' + escHTML(ui('automated')) + '</button>'
       +   '</div></div>'
       +   '<div><label class="catalog-control-label" for="catalog-line">' + escHTML(ui('line')) + '</label><select id="catalog-line" class="catalog-select"><option value="all">' + escHTML(ui('anyLine')) + '</option>' + lineOptions + '</select></div>'
+      +   '<div><label class="catalog-control-label" for="catalog-profile-type">' + escHTML(ui('profileType')) + '</label><select id="catalog-profile-type" class="catalog-select">'
+      +     '<option value="all">' + escHTML(ui('allProfiles')) + '</option>'
+      +     '<option value="meio-fio">' + escHTML(ui('profileMeioFio')) + '</option>'
+      +     '<option value="guia-sarjeta">' + escHTML(ui('profileGuia')) + '</option>'
+      +     '<option value="calcada">' + escHTML(ui('profileCalcada')) + '</option>'
+      +     '<option value="canaleta-drenagem">' + escHTML(ui('profileCanaleta')) + '</option>'
+      +     '<option value="barreira-new-jersey">' + escHTML(ui('profileBarreira')) + '</option>'
+      +     '<option value="pavimento-concreto">' + escHTML(ui('profilePavimento')) + '</option>'
+      +   '</select></div>'
       +   '<div><label class="catalog-control-label" for="catalog-capability">' + escHTML(ui('capability')) + '</label><select id="catalog-capability" class="catalog-select">'
       +     '<option value="all">' + escHTML(ui('allFeatures')) + '</option>'
-      +     '<option value="automated">' + escHTML(ui('automated')) + '</option>'
-      +     '<option value="steel-tracks">' + escHTML(ui('steelTracks')) + '</option>'
-      +     '<option value="clutch">' + escHTML(ui('clutch')) + '</option>'
-      +     '<option value="wide-profile">' + escHTML(ui('wideProfile')) + '</option>'
+      +     '<option value="automated">' + escHTML(ui('featureAutomated')) + '</option>'
+      +     '<option value="hydraulic-vibrator">' + escHTML(ui('featureVibrator')) + '</option>'
+      +     '<option value="3d-monitoring">' + escHTML(ui('feature3d')) + '</option>'
+      +     '<option value="clutch">' + escHTML(ui('featureClutch')) + '</option>'
       +   '</select></div>'
       +   '<div><label class="catalog-control-label" for="catalog-sort">' + escHTML(ui('sort')) + '</label><select id="catalog-sort" class="catalog-select">'
       +     '<option value="recommended">' + escHTML(ui('recommended')) + '</option>'
@@ -181,11 +213,13 @@
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
     var line = controls.querySelector('#catalog-line');
+    var profileTypeEl = controls.querySelector('#catalog-profile-type');
     var capability = controls.querySelector('#catalog-capability');
     var sort = controls.querySelector('#catalog-sort');
     var search = controls.querySelector('#catalog-search');
     var countEl = controls.querySelector('#catalog-results-count');
     if (line) line.value = state.line;
+    if (profileTypeEl) profileTypeEl.value = state.profileType;
     if (capability) capability.value = state.capability;
     if (sort) sort.value = state.sort;
     if (search && search.value !== state.query) search.value = state.query;
@@ -216,11 +250,7 @@
       +         '<span class="text-sm font-bold text-on-surface">' + escHTML(widthVal) + '</span>'
       +       '</div>'
       +     '</div>'
-      +     '<div class="mt-auto flex items-center justify-between gap-3">'
-      +       '<span class="text-xs font-bold text-success flex items-center gap-1">'
-      +         '<span class="material-symbols-outlined text-xs" style="font-variation-settings:\'FILL\' 1;">check_circle</span>'
-      +         escHTML(ui('available'))
-      +       '</span>'
+      +     '<div class="mt-auto flex justify-end">'
       +       '<span class="bg-primary-container text-on-primary-container px-5 py-2.5 rounded font-bold text-xs uppercase tracking-widest group-hover:bg-primary group-hover:text-on-primary transition-colors flex items-center gap-2">'
       +         escHTML(ui('seeDetails'))
       +         '<span class="material-symbols-outlined text-sm">arrow_outward</span>'
@@ -262,6 +292,7 @@
     controls.addEventListener('change', function (event) {
       if (!event.target) return;
       if (event.target.id === 'catalog-line') state.line = event.target.value || 'all';
+      if (event.target.id === 'catalog-profile-type') state.profileType = event.target.value || 'all';
       if (event.target.id === 'catalog-capability') state.capability = event.target.value || 'all';
       if (event.target.id === 'catalog-sort') state.sort = event.target.value || 'recommended';
       render();
