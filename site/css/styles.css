@@ -1866,6 +1866,18 @@ footer .material-symbols-outlined.text-primary {
 :root[data-theme="dark"] .bg-surface-container-high\/30 {
   background-color: rgba(255, 255, 255, 0.05) !important;
 }
+/* "Eng. Responsável" quote callout (contato.html): a dark card on light mode,
+   so it inverts to a white card with black text on dark mode to keep contrast. */
+:root[data-theme="dark"] .quote-callout {
+  background-color: #ffffff !important;
+  border-color: rgba(31, 35, 34, 0.12) !important;
+}
+:root[data-theme="dark"] .quote-callout .text-white {
+  color: #1f2322 !important;
+}
+:root[data-theme="dark"] .quote-callout .text-white\/70 {
+  color: rgba(31, 35, 34, 0.66) !important;
+}
 
 /* ========== Theme toggle button (nav) ========== */
 .theme-toggle {
